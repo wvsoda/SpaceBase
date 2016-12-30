@@ -20,7 +20,7 @@ public class GUIManager implements TimerInterface {
 	}
 	
 	public void initReftoGUIPane(GameController gc, List<Entity> ents){
-		gui.initReftoGamePane(gc, ents);
+		gui.initReftoGUIPane(gc, ents);
 	}
 	
 	public JFrame getThis(){
