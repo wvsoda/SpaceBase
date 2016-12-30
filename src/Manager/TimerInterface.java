@@ -1,6 +1,6 @@
 package Manager;
 
-import java.util.Timer;
+import javax.swing.Timer;
 
 public interface TimerInterface {
 	Timer initTimer();
