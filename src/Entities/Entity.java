@@ -1,5 +1,9 @@
 package Entities;
 
-public class Entity {
+public abstract class Entity {
+	
+	Entity(){
+
+	}
 
 }

@@ -17,11 +17,11 @@ import javax.swing.JFrame;
 public class GUIPane extends JFrame implements 
 ActionListener, KeyListener, MouseListener{
 	
-	List<Entity> ents;
-	char key;
-	int clickedX, clickedY;
-	boolean clicked;
-	GameController gaco;
+	private List<Entity> ents;
+	private char key;
+	private int clickedX, clickedY;
+	private boolean clicked;
+	private GameController gaco;
 	
 	public GUIPane(){
 		super("SpaceBase");
@@ -44,19 +44,19 @@ ActionListener, KeyListener, MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		clickedX = e.getX();
+		clickedY = e.getY();
+		clicked = true;
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -96,4 +96,19 @@ ActionListener, KeyListener, MouseListener{
 		
 	}
 	
+	public boolean isClicked() {
+		if(clicked) {
+			clicked = false;
+			return true;
+		}
+		else return false;
+	}
+	
+	public int getClickedX() {
+		return clickedX;
+	}
+	
+	public int getClickedY() {
+		return clickedY;
+	}
 }
