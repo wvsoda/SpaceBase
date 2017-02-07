@@ -3,6 +3,8 @@ package Thread;
 import Entities.*;
 import Main.GameController;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -41,6 +43,33 @@ ActionListener, KeyListener, MouseListener{
 		gaco = gc;
 		ents = entities;
 	}
+	
+	public void paint(Graphics g)
+    {
+        // gra = g;
+        Image offImage = createImage(748, 748);
+        // if (offImage == null) offImage = createImage(748,748);
+        // Creates an off-screen drawable image to be used for
+        // double buffering; XSIZE, YSIZE are each of type ‘int’
+        Graphics buffer = offImage.getGraphics();
+        // Creates a graphics context for drawing to an
+        // off-screen image
+        paintOffScreen(buffer); // your own method
+        g.drawImage(offImage, 0, 0, null);
+
+        // draws the image with upper left corner at 0,0
+
+        // Calls GameController's play() method
+        //gameController.play();
+    }
+
+    public void paintOffScreen(Graphics g)
+    {
+    	for(Entity e : ents){
+    		e.draw(g);
+    		
+    	}
+    }
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
