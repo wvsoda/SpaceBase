@@ -1,7 +1,7 @@
 package Entities;
 
+import java.awt.Graphics;
 import java.awt.Polygon;
-import Main.GameController;
 
 
 public abstract class Entity {
@@ -23,6 +23,8 @@ public abstract class Entity {
 	
 	public abstract void tickAction();
 	
+	public abstract void draw(Graphics g);
+	
 	public void moveTo (int newX, int newY, double newAngle){
 		xCoord = newX;
 		yCoord = newY;
@@ -34,8 +36,16 @@ public abstract class Entity {
 		width = newW;
 	}
 	
-	public void killSelf(){
-		GameController.kill(this);
+	public void changeOnScreen(boolean bool){
+		onScreen = bool;
+	}
+	
+	public boolean isOnScreen(){
+		return onScreen;
+	}
+	
+	public Polygon returnBounds(){
+		return bounds;
 	}
 	
 }
