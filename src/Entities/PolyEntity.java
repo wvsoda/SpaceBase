@@ -1,10 +1,11 @@
 package Entities;
-
+/*
 public abstract class PolyEntity extends Entity {
-	Entity hi;
+	//Entity hi;
 	
 	PolyEntity(){
-
+		super();
 	}
 	
 }
+*/

@@ -9,11 +9,13 @@ import Main.GameController;
 import Entities.Entity;
 
 
-public class GUIManager implements TimerInterface {
+public class GUIManager {
 	
 	GUIPane gui = new GUIPane();
 	
-	@Override
+	//public GU
+	
+	//@Override
 	public Timer initTimer() {
 		// TODO Auto-generated method stub
 		return new Timer(50, gui);
@@ -23,7 +25,7 @@ public class GUIManager implements TimerInterface {
 		gui.initReftoGUIPane(gc, ents);
 	}
 	
-	public JFrame getThis(){
+	public GUIPane getThis(){
 		return gui;
 	}
 	

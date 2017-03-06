@@ -24,6 +24,8 @@ ActionListener, KeyListener, MouseListener{
 	private int clickedX, clickedY;
 	private boolean clicked;
 	private GameController gaco;
+	int time;
+	String testing;
 	
 	public GUIPane(){
 		super("SpaceBase");
@@ -36,7 +38,14 @@ ActionListener, KeyListener, MouseListener{
         });
 		addKeyListener(this);
 		addMouseListener(this);
+		this.setSize(600, 600);
+		time =0;
+		testing = "";
 		
+	}
+	
+	public void changeTestString(String r){
+		testing = r;
 	}
 	
 	public void initReftoGUIPane(GameController gc, List<Entity> entities){
@@ -66,9 +75,11 @@ ActionListener, KeyListener, MouseListener{
     public void paintOffScreen(Graphics g)
     {
     	for(Entity e : ents){
+    		e.tickAction();
     		e.draw(g);
     		
     	}
+    	g.drawString(testing, clickedX, clickedY);
     }
 	
 	@Override
@@ -103,7 +114,7 @@ ActionListener, KeyListener, MouseListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -121,8 +132,8 @@ ActionListener, KeyListener, MouseListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		gaco.play();
+		System.out.println("Hello Tim");
 	}
 	
 	public boolean isClicked() {

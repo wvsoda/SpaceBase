@@ -11,7 +11,7 @@ public abstract class Entity {
 	protected String image;
 	protected Polygon bounds;
 	protected boolean onScreen;
-
+	
 	public Entity(int x, int y, int h, int w, double angel, String img){
 		xCoord = x;
 		yCoord = y;
@@ -20,6 +20,7 @@ public abstract class Entity {
 		angle = angel;
 		image = img;
 	}
+	
 	
 	public abstract void tickAction();
 	
@@ -48,4 +49,7 @@ public abstract class Entity {
 		return bounds;
 	}
 	
+	protected void setBounds(Polygon x){
+		bounds = x;
+	}
 }
