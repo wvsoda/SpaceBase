@@ -22,7 +22,7 @@ public abstract class Entity {
 	}
 	
 	
-	public abstract void tickAction();
+	public abstract void tickAction(Object b);
 	
 	public abstract void draw(Graphics g);
 	

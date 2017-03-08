@@ -75,7 +75,8 @@ ActionListener, KeyListener, MouseListener{
     public void paintOffScreen(Graphics g)
     {
     	for(Entity e : ents){
-    		e.tickAction();
+    		Integer[] is = {clickedX, clickedY};
+    		e.tickAction(is);
     		e.draw(g);
     		
     	}

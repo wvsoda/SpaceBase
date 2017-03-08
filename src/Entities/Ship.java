@@ -1,27 +1,19 @@
 package Entities;
 
-import java.awt.Graphics;
 
-import Thread.GUIPane;
-import importing.*;
-
-public class Ship extends Entity {
-	protected static GUIPane frame;
+public class Ship extends PolyEntity {
 
 	public Ship(int x, int y, int h, int w, double angel){
-		super(x, y, h, w, angel, "sundevil.png");
+		super(x, y, h, w, angel, "ship", null);
 	}
 
 	@Override
-	public void tickAction() {
-
+	public void tickAction(Object b) {
+		Integer[] is = ((Integer[])b);
+		xCoord = is[0];
+		yCoord = is[1];
 		
 	}
 
-	@Override
-	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		g.drawImage(ImportManager.ship, xCoord, yCoord, height, width, null);
-	}
 
 }

@@ -17,6 +17,13 @@ public class ImportManager {
 		ship = shipIcon.getImage();
 		
 	}
+	
+	public static Image getImage(String img){
+		if(img.equals("ship"))
+			return ship;
+		else
+			return null;
+	}
 	/*
 	public Image squareHolder()
 	{
