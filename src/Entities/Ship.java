@@ -24,4 +24,9 @@ public class Ship extends Entity {
 		g.drawImage(ImportManager.ship, xCoord, yCoord, height, width, null);
 	}
 
+	@Override
+	public void checkBounds(int x, int y) {
+		
+	}
+
 }

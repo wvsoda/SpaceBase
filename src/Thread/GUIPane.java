@@ -5,6 +5,7 @@ import Main.GameController;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Polygon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -24,6 +25,7 @@ ActionListener, KeyListener, MouseListener{
 	private int clickedX, clickedY;
 	private boolean clicked;
 	private GameController gaco;
+	private Polygon poly;
 	int time;
 	String testing;
 	
@@ -87,7 +89,9 @@ ActionListener, KeyListener, MouseListener{
 		clickedX = e.getX();
 		clickedY = e.getY();
 		clicked = true;
-		
+		for(Entity x : ents){
+			x.checkBounds(clickedX, clickedY);
+		}
 	}
 
 	@Override
@@ -133,7 +137,6 @@ ActionListener, KeyListener, MouseListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		gaco.play();
-		System.out.println("Hello Tim");
 	}
 	
 	public boolean isClicked() {

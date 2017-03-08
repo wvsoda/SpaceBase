@@ -26,6 +26,8 @@ public abstract class Entity {
 	
 	public abstract void draw(Graphics g);
 	
+	public abstract void checkBounds(int x, int y);
+	
 	public void moveTo (int newX, int newY, double newAngle){
 		xCoord = newX;
 		yCoord = newY;
