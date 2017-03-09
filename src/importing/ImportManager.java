@@ -39,14 +39,14 @@ public class ImportManager {
 
 		int polyx[] = {0,0,30,30};
 		int polyy[] = {100,0,0,100};
-		TestingPolygon engineLeft = new TestingPolygon(385,210,30,100,0,"",polyx,polyy);
-		TestingPolygon engineRight = new TestingPolygon(485,210,30,100,0,"",polyx,polyy);
+		TestingPolygon engineLeft = new TestingPolygon(385,210,30,100,0,"blue.png",polyx,polyy,3);
+		TestingPolygon engineRight = new TestingPolygon(485,210,30,100,0,"blue.png",polyx,polyy,3);
 		int polyxx[] = {0,0,50,50};
 		int polyyy[] = {125,0,0,125};
-		TestingPolygon chassis = new TestingPolygon(425,125,50,125,0,"",polyxx,polyyy);
+		TestingPolygon chassis = new TestingPolygon(425,125,50,125,0,"blue.png",polyxx,polyyy,2);
 		int polyxxx[] = {0,25,50};
 		int polyyyy[] = {50,0,50};
-		TestingPolygon cockpit = new TestingPolygon(425,75,50,50,0,"",polyxxx,polyyyy);
+		TestingPolygon cockpit = new TestingPolygon(425,75,50,50,0,"blue.png",polyxxx,polyyyy,1);
 		
 		
 		//create and add entities to list

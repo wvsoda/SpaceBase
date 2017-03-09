@@ -13,11 +13,12 @@ public class TestingPolygon extends Entity{
 	int oldX, oldY;
 	private Image img;
 	private String prevImg;
+	private int option = 0;
 	
-	public TestingPolygon(int x, int y, int h, int w, double angel, String img, int xCoords[], int yCoords[]) {
+	public TestingPolygon(int x, int y, int h, int w, double angel, String img, int xCoords[], int yCoords[], int opt) {
 		super(x, y, h, w, angel, img);
 		poly = new Polygon(xCoords, yCoords, xCoords.length);
-		
+		option = opt;
 	}
 
 	@Override
@@ -53,6 +54,29 @@ public class TestingPolygon extends Entity{
 		}
 		g.drawImage(img, xCoord, yCoord, height, width, null);
 		g.drawPolygon(poly);
+		
+		
+		switch(option){
+		case 0:
+			break;
+		case 1:
+			if (image != "blue.png"){
+				g.drawString("Pilot: Nir, Engineer: Deavon", 50, 400);
+			}
+			break;
+		case 2:
+			if (image != "blue.png"){
+				g.drawString("Storage: 16 purple unicorn meat, 6 measly rations", 50, 425);
+			}
+			break;
+		case 3:
+			if (image != "blue.png"){
+				g.drawString("Fuel: 666 / 1000", 50, 450);
+			}
+			break;
+		default:
+			System.out.println("hurp derp");
+		}
 	}
 	
 	public void checkBounds(int xClick, int yClick){
