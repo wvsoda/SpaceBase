@@ -40,7 +40,7 @@ ActionListener, KeyListener, MouseListener{
         });
 		addKeyListener(this);
 		addMouseListener(this);
-		this.setSize(600, 600);
+		this.setSize(900, 506);
 		time =0;
 		testing = "";
 		

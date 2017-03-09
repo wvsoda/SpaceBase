@@ -34,19 +34,30 @@ public class ImportManager {
 	
 	
 	public static List<Entity> InitEnts(){
+		// initialize entities
+		Ship shipImg = new Ship(300,50,300,300,0); 
+
+		int polyx[] = {0,0,30,30};
+		int polyy[] = {100,0,0,100};
+		TestingPolygon engineLeft = new TestingPolygon(385,210,30,100,0,"",polyx,polyy);
+		TestingPolygon engineRight = new TestingPolygon(485,210,30,100,0,"",polyx,polyy);
+		int polyxx[] = {0,0,50,50};
+		int polyyy[] = {125,0,0,125};
+		TestingPolygon chassis = new TestingPolygon(425,125,50,125,0,"",polyxx,polyyy);
+		int polyxxx[] = {0,25,50};
+		int polyyyy[] = {50,0,50};
+		TestingPolygon cockpit = new TestingPolygon(425,75,50,50,0,"",polyxxx,polyyyy);
+		
+		
+		//create and add entities to list
 		List<Entity> ents;
-		Ship e = new Ship(0,0,100,100,0); 
-		int polyx[] = {0,50,100};
-		int polyy[] = {0,50,0};
-		TestingPolygon c = new TestingPolygon(150,200,100,50,0,"red.png",polyx,polyy);
-		int polyxx[] = {0,150,300};
-		int polyyy[] = {0,150,0};
-		TestingPolygon d = new TestingPolygon(50,100,300,150,0,"blue.png",polyxx,polyyy);
 		ents = new ArrayList<Entity>();
 
-		ents.add(e);
-		ents.add(d);
-		ents.add(c);
+		ents.add(shipImg);
+		ents.add(engineLeft);
+		ents.add(engineRight);
+		ents.add(chassis);
+		ents.add(cockpit);
 		
 		return ents;
 	}

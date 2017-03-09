@@ -12,6 +12,7 @@ public class TestingPolygon extends Entity{
 	private Polygon poly;
 	int oldX, oldY;
 	private Image img;
+	private String prevImg;
 	
 	public TestingPolygon(int x, int y, int h, int w, double angel, String img, int xCoords[], int yCoords[]) {
 		super(x, y, h, w, angel, img);
@@ -27,10 +28,11 @@ public class TestingPolygon extends Entity{
 	
 	private void whenClicked(int x, int y){
 		System.out.println("clicked at " + x + ", " + y);
-		if (image == "red.png"){
+		if (image != "blue.png"){
+			prevImg = image;
 			image = "blue.png";
 		}else{
-			image = "red.png";
+			image = prevImg;
 		}
 	}
 
@@ -44,10 +46,10 @@ public class TestingPolygon extends Entity{
 			oldX = xCoord;
 			oldY = yCoord;
 		}
-		if(image == "red.png"){
-			img = ImportManager.red;
-		}else{
+		if(image != "blue.png"){
 			img = ImportManager.blue;
+		}else{
+			img = null;
 		}
 		g.drawImage(img, xCoord, yCoord, height, width, null);
 		g.drawPolygon(poly);
