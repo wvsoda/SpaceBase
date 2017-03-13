@@ -25,6 +25,7 @@ ActionListener, KeyListener, MouseListener{
 	private boolean clicked;
 	private GameController gaco;
 	int time;
+	private final int winWidth = 900, winHeight = 506;
 	String testing;
 	
 	public GUIPane(){
@@ -38,7 +39,7 @@ ActionListener, KeyListener, MouseListener{
         });
 		addKeyListener(this);
 		addMouseListener(this);
-		this.setSize(600, 600);
+		this.setSize(winWidth, winHeight);
 		time =0;
 		testing = "";
 		
@@ -56,7 +57,7 @@ ActionListener, KeyListener, MouseListener{
 	public void paint(Graphics g)
     {
         // gra = g;
-        Image offImage = createImage(748, 748);
+        Image offImage = createImage(winWidth, winHeight);
         // if (offImage == null) offImage = createImage(748,748);
         // Creates an off-screen drawable image to be used for
         // double buffering; XSIZE, YSIZE are each of type ‘int’
@@ -134,7 +135,7 @@ ActionListener, KeyListener, MouseListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		gaco.play();
-		System.out.println("Hello Tim");
+		//System.out.println("Hello Tim");
 	}
 	
 	public boolean isClicked() {

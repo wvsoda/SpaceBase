@@ -1,4 +1,6 @@
 package Main;
+import importing.ImportManager;
+
 import java.util.*;
 
 import Entities.*;
@@ -19,10 +21,7 @@ public class GameController {
 		gui = new GUIManager();
 		Timer t = gui.initTimer();
 		t.start();
-		Ship e = new Ship(0,0,100,100,0); 
-		ents = new ArrayList<Entity>();
-
-		ents.add(e);
+		ents = ImportManager.initEnts();
 		//int x, int y, int h, int w, double angel, String img
 		gui.initReftoGUIPane(this, ents);
 		JFrame realGui = gui.getThis();

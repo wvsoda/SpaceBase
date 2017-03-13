@@ -49,6 +49,8 @@ public abstract class Entity {
 		return bounds;
 	}
 	
+	public abstract void checkBounds(int xClick, int yClick);
+	
 	protected void setBounds(Polygon x){
 		bounds = x;
 	}
