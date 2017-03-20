@@ -1,14 +1,19 @@
 package Entities;
 
 import java.awt.Graphics;
+import java.awt.Polygon;
+import java.util.ArrayList;
 
 public class ShipModule extends Entity{
 
-	// instatiate structure of Moveable Resources
+	ArrayList<MovableResource> resources;
+	String moduleType;
+	int relX, relY;
 	
-	public ShipModule(int x, int y, int h, int w, double angel, String img) {
-		super(x, y, h, w, angel, "");
-		// TODO Auto-generated constructor stub
+	public ShipModule(Polygon b, String modType) {
+		super(0,0,0,0, 0.0, "");
+		moduleType = modType;
+		bounds = b;
 	}
 
 	@Override
@@ -19,5 +24,11 @@ public class ShipModule extends Entity{
 
 	@Override
 	public void draw(Graphics g) {}
+
+	@Override
+	public void whenClicked(int x, int y) {
+		System.out.print(moduleType);
+		
+	}
 
 }

@@ -89,6 +89,10 @@ ActionListener, KeyListener, MouseListener{
 		clickedX = e.getX();
 		clickedY = e.getY();
 		clicked = true;
+		System.out.print("wha");
+		for(Entity x : ents){
+			x.checkBounds(clickedX, clickedY);
+		}
 		
 	}
 

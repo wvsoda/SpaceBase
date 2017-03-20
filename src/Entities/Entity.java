@@ -49,9 +49,14 @@ public abstract class Entity {
 		return bounds;
 	}
 	
-	public abstract void checkBounds(int xClick, int yClick);
+	public void checkBounds(int xClick, int yClick){
+		if(bounds.contains(xClick, yClick))
+			whenClicked(xClick, yClick);
+	}
 	
 	protected void setBounds(Polygon x){
 		bounds = x;
 	}
-}
+	
+	public abstract void whenClicked(int x, int y);
+	}
