@@ -79,6 +79,7 @@ ActionListener, KeyListener, MouseListener{
     		Integer[] is = {clickedX, clickedY};
     		e.tickAction(is);
     		e.draw(g);
+    		g.drawPolygon(e.returnBounds());
     		
     	}
     	g.drawString(testing, clickedX, clickedY);

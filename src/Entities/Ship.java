@@ -10,8 +10,9 @@ public class Ship extends PolyEntity {
 	
 	public Ship(int x, int y, int h, int w, double angel){
 		super(x, y, h, w, angel, "tomShip", null);
-		
-		this.setBounds(new Polygon(new int[]{93,274,294,488},new int[]{146,300,302,465},4));
+		int[] ptsx = {93,274,488,294};
+		int[] ptsy = {302,146,300,465};
+		this.setBounds(new Polygon(ptsx,ptsy,4));
 		//modules.add(new ShipModule())
 		//components
 	}
