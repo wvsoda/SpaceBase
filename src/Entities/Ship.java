@@ -12,6 +12,7 @@ public class Ship extends PolyEntity {
 		super(x, y, h, w, angel, "tomShip", null);
 		int[] ptsx = {93,274,488,294};
 		int[] ptsy = {302,146,300,465};
+		//TODO: fix polygon bounds eventually
 		this.setBounds(new Polygon(ptsx,ptsy,4));
 		//modules.add(new ShipModule())
 		//components
@@ -27,9 +28,16 @@ public class Ship extends PolyEntity {
 
 	@Override
 	public void whenClicked(int x, int y) {
-		/*for(ShipModule mod : modules)
-			mod.checkBounds(x, y);*/
-		System.out.print("yay");
+		boolean done = false;
+		int i = 0;
+		while(!done && i < modules.size()){
+			if(modules.get(i).checkBounds(x,y)){
+				done = true;
+			}
+			else
+				i++;
+		}
+		//System.out.print("yay");
 		
 	}
 
