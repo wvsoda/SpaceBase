@@ -3,6 +3,7 @@ package Thread;
 import Entities.*;
 import Main.GameController;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -82,6 +83,7 @@ ActionListener, KeyListener, MouseListener{
     		g.drawPolygon(e.returnBounds());
     		
     	}
+    	g.setColor(Color.BLUE);
     	g.drawString(testing, clickedX, clickedY);
     	
     }

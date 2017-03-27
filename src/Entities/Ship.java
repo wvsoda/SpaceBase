@@ -14,10 +14,13 @@ public class Ship extends PolyEntity {
 		int[] ptsy = {302,146,300,465};
 		int[] shipModx = {404,411,419,467,482,479,467};
 		int[] shipMody = {186,399,467,423,399,259,186};
+		int[] shipModx2 = {124,105,121,167,182,184};
+		int[] shipMody2 = {194,254,420,420,400,187};
 		//TODO: fix polygon bounds eventually
 		components = new ArrayList<Entity>();
 		this.setBounds(new Polygon(ptsx,ptsy,4));
-		components.add(new ShipModule(new Polygon(shipModx,shipMody,7), "Engine"));
+		components.add(new ShipModule(new Polygon(shipModx,shipMody,7), "Thruster "));
+		components.add(new ShipModule(new Polygon(shipModx2, shipMody2, 6), "Storager "));
 		//components
 	}
 
