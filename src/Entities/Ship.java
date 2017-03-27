@@ -6,15 +6,18 @@ import java.util.ArrayList;
 
 public class Ship extends PolyEntity {
 
-	ArrayList<ShipModule> modules;
+	//ArrayList<ShipModule> components;
 	
 	public Ship(int x, int y, int h, int w, double angel){
 		super(x, y, h, w, angel, "tomShip", null);
 		int[] ptsx = {93,274,488,294};
 		int[] ptsy = {302,146,300,465};
+		int[] shipModx = {404,411,419,467,482,479,467};
+		int[] shipMody = {186,399,467,423,399,259,186};
 		//TODO: fix polygon bounds eventually
+		components = new ArrayList<Entity>();
 		this.setBounds(new Polygon(ptsx,ptsy,4));
-		//modules.add(new ShipModule())
+		components.add(new ShipModule(new Polygon(shipModx,shipMody,7), "Engine"));
 		//components
 	}
 
@@ -30,14 +33,15 @@ public class Ship extends PolyEntity {
 	public void whenClicked(int x, int y) {
 		boolean done = false;
 		int i = 0;
-		while(!done && i < modules.size()){
-			if(modules.get(i).checkBounds(x,y)){
+		while(!done && i < components.size()){
+			if(components.get(i).checkBounds(x,y)){
 				done = true;
 			}
 			else
 				i++;
 		}
-		//System.out.print("yay");
+		//if(bounds.contains(x, y))
+		//	System.out.print("yay");
 		
 	}
 

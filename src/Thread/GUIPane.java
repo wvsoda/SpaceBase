@@ -83,6 +83,7 @@ ActionListener, KeyListener, MouseListener{
     		
     	}
     	g.drawString(testing, clickedX, clickedY);
+    	
     }
 	
 	@Override

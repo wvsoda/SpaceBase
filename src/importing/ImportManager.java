@@ -12,6 +12,7 @@ import Entities.*;
 public class ImportManager {
 	public ClassLoader cldr;
 	public static Image ship, tomShip, noimage;
+	//public Polygon rightMod;
 	//public static Location[][] grid;
 	
 	public ImportManager()
@@ -24,6 +25,7 @@ public class ImportManager {
 		ship = shipIcon.getImage();
 		tomShip = tomShipIcon.getImage();
 		noimage = noImgIcon.getImage();
+		
 		
 	}
 	
