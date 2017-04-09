@@ -27,6 +27,7 @@ public abstract class Entity {
 	public abstract void draw(Graphics g);
 	
 	public void moveTo (int newX, int newY, double newAngle){
+		bounds.translate(newX-xCoord, newY-yCoord);
 		xCoord = newX;
 		yCoord = newY;
 		angle = newAngle;

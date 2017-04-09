@@ -14,12 +14,37 @@ public abstract class PolyEntity extends Entity {
 	}
 	
 	@Override
+	public void moveTo(int newX, int newY, double newAngle){
+		int deltaX = newX - xCoord, deltaY = newY - yCoord;
+		super.moveTo(newX, newY, newAngle);
+		translateComs(deltaX,deltaY);
+	}
+	
+	protected void translateComs(int deltaX, int deltaY){
+		for(Entity e : components){
+			e.moveTo(e.xCoord + deltaX, e.yCoord + deltaY, 0);
+		}
+	}
+	
+	protected int smallest(int[] xs){
+		int smallest = Integer.MAX_VALUE;
+		for(int i : xs){
+			if(i < smallest)
+				smallest = i;
+		}
+		return smallest;
+	}
+	
+	@Override
 	public abstract void tickAction(Object b);
 
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		g.drawImage(ImportManager.getImage(image), xCoord, yCoord, height, width, null);
+		for(Entity e : components){
+			e.draw(g);
+		}
 	}
 	
 }

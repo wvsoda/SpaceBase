@@ -3,32 +3,48 @@ package Entities;
 import java.awt.Polygon;
 import java.util.ArrayList;
 
+public class Ship extends PolyEntity implements MenuSpawnable {
 
-public class Ship extends PolyEntity {
-
-	//ArrayList<ShipModule> components;
+	ShipModule clicked;
 	
 	public Ship(int x, int y, int h, int w, double angel){
-		super(x, y, h, w, angel, "tomShip", null);
-		int[] ptsx = {93,274,488,294};
-		int[] ptsy = {302,146,300,465};
-		int[] shipModx = {404,411,419,467,482,479,467};
-		int[] shipMody = {186,399,467,423,399,259,186};
-		int[] shipModx2 = {124,105,121,167,182,184};
-		int[] shipMody2 = {194,254,420,420,400,187};
-		//TODO: fix polygon bounds eventually
+		super(0, 0, h, w, angel, "tomShip", null);
+		int[] shipX = {0,115,115,275,275,385,385,310,310,80,80,0};
+		int[] shipY = {100,100,35,35,100,100,340,340,490,490,345,345};
+		int[] EngineRx = {300,385,385,300};
+		int[] EngineLx = {0,85,85,0};
+		int[] EngineLRy = {100,100,340,340};
+		int[] cockpitX = {115,275,275,115};
+		int[] cockpitY = {35,35,100,100};
+		int[] storageX = {115,275,275,115};
+		int[] storageY = {100,100,315,315};
+		int[] mainEngineX = {80,310,310,80};
+		int[] mainEngineY = {315,315,490,490};
+		
+		
 		components = new ArrayList<Entity>();
-		this.setBounds(new Polygon(ptsx,ptsy,4));
-		components.add(new ShipModule(new Polygon(shipModx,shipMody,7), "Thruster "));
-		components.add(new ShipModule(new Polygon(shipModx2, shipMody2, 6), "Storager "));
+		this.setBounds(new Polygon((shipX),(shipY),shipX.length));
+		components.add(new ShipModule(new Polygon(EngineRx,EngineLRy,EngineRx.length), 
+				"EngineR", smallest(EngineRx), smallest(EngineLRy)));
+		components.add(new ShipModule(new Polygon((EngineLx),(EngineLRy),EngineLRy.length), 
+				"EngineL", smallest(EngineLx), smallest(EngineLRy)));
+		components.add(new ShipModule(new Polygon((cockpitX), (cockpitY), cockpitX.length), 
+				"Cockpit", smallest(cockpitX), smallest(cockpitY)));
+		components.add(new ShipModule(new Polygon((storageX), (storageY), storageX.length), 
+				"Storage", smallest(storageX), smallest(storageY)));
+		components.add(new ShipModule(new Polygon((mainEngineX), (mainEngineY), mainEngineX.length), 
+				"MainEngine", smallest(mainEngineX), smallest(mainEngineY)));
+		moveTo(x, y, 0);
+		clicked = null;
 		//components
 	}
 
 	@Override
 	public void tickAction(Object b) {
-		Integer[] is = ((Integer[])b);
-		//xCoord = is[0];
-		//yCoord = is[1];
+		//Integer[] is = ((Integer[])b);
+		for(Entity e : components){
+			e.tickAction(b);
+		}
 		
 	}
 
@@ -37,7 +53,9 @@ public class Ship extends PolyEntity {
 		boolean done = false;
 		int i = 0;
 		while(!done && i < components.size()){
-			if(components.get(i).checkBounds(x,y)){
+			ShipModule e= (ShipModule) components.get(i);
+			if(e.checkBounds(x,y)){
+				clicked = e;
 				done = true;
 			}
 			else
@@ -46,6 +64,18 @@ public class Ship extends PolyEntity {
 		//if(bounds.contains(x, y))
 		//	System.out.print("yay");
 		
+	}
+
+	@Override
+	public Menu spawnMenu() {
+		// TODO Auto-generated method stub
+		try{
+			return clicked.spawnMenu();
+		}
+	    catch(NullPointerException e){
+	    	System.out.println("Your shit's null boi");
+	    	return null;
+	    }
 	}
 
 
