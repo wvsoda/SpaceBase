@@ -3,6 +3,8 @@ package Entities;
 import java.awt.Polygon;
 import java.util.ArrayList;
 
+import importing.ImportManager;
+
 
 public class Ship extends PolyEntity {
 
@@ -31,7 +33,7 @@ public class Ship extends PolyEntity {
 
 	@Override
 	public void whenClicked(int x, int y) {
-		boolean done = false;
+		/*boolean done = false;
 		int i = 0;
 		while(!done && i < components.size()){
 			if(components.get(i).checkBounds(x,y)){
@@ -39,10 +41,11 @@ public class Ship extends PolyEntity {
 			}
 			else
 				i++;
-		}
-		//if(bounds.contains(x, y))
-		//	System.out.print("yay");
-		
+				
+		}*/
+		ImportManager.playSound();
+		ImportManager.loop();
+		//ImportManager.stop();
 	}
 
 
