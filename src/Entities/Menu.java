@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class Menu extends PolyEntity {
 	boolean opened;
-	public Menu(int x, int y, int h, int w,
+	public Menu(int x, int y, int w, int h,
 			ArrayList<Entity> coms) {
 		super(x, y, h, w, 0, "menu", coms);
 		opened = false;
-		int[] xs = {x,x,x+w,x+w};
-		int[] ys = {y,y+h,y+h,y};
+		int[] xs = {x,x,x+h,x+h};
+		int[] ys = {y,y+w,y+w,y};
 		bounds = new Polygon(xs,ys,4);
 	}
 
