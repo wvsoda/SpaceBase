@@ -44,7 +44,7 @@ public class Ship extends PolyEntity {
 				
 		}*/
 		ImportManager.playSound();
-		ImportManager.loop();
+		//ImportManager.loop();
 		//ImportManager.stop();
 	}
 
