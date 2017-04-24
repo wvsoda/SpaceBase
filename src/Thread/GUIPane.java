@@ -96,12 +96,9 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	public void mouseClicked(MouseEvent e) {
 		clickedX = e.getX();
 		clickedY = e.getY();
-		if(e.getButton()==3)
-			clickActions(true);
-		else
-			clickActions(false);
+		clickActions();
 		
-		System.out.println(e.getButton());
+		//System.out.println(e.getButton());
 		
 	}
 
@@ -151,25 +148,25 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 		//System.out.println("Hello Tim");
 	}
 	
-	private void clickActions(boolean closeMenu){
-		boolean menuAdded = false;
+	private void clickActions(){
+		boolean menuOpen = false;
 		if(openMenu == null)
 			for(Entity x : ents){
 				x.checkBounds(clickedX, clickedY);
 				if(x instanceof MenuSpawnable){
 					openMenu = ((MenuSpawnable)x).spawnMenu();
-					if(openMenu != null)
-						menuAdded = true;
+					menuOpen = true;
 				}
 			}
-		else
-			if(openMenu.checkBounds(clickedY, clickedY) == false)
-				if(closeMenu){
-					ents.remove(openMenu);
-					openMenu = null;
-				}
-		if(menuAdded)
+		else{
+			if(!openMenu.checkBounds(clickedX, clickedY)){
+				ents.remove(openMenu);
+				openMenu = null;
+			}
+		}
+		if(menuOpen)
 			ents.add(openMenu);
+		
 	}
 	
 	public boolean isClicked() {

@@ -10,8 +10,8 @@ public class Menu extends PolyEntity {
 			ArrayList<Entity> coms) {
 		super(x, y, h, w, 0, "menu", coms);
 		opened = false;
-		int[] xs = {x,x,x+h,x+h};
-		int[] ys = {y,y+w,y+w,y};
+		int[] xs = {x,x,x+w,x+w};
+		int[] ys = {y,y+h,y+h,y};
 		bounds = new Polygon(xs,ys,4);
 	}
 
@@ -22,7 +22,7 @@ public class Menu extends PolyEntity {
 	
 	@Override
 	public void whenClicked(int x, int y) {
-		close();
+		System.out.println("foik");
 
 	}
 	
