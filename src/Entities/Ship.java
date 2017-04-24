@@ -2,6 +2,7 @@ package Entities;
 
 import java.awt.Polygon;
 import java.util.ArrayList;
+import importing.ImportManager;
 
 public class Ship extends PolyEntity implements MenuSpawnable {
 
@@ -61,6 +62,7 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 			else
 				i++;
 		}
+		ImportManager.playSound();
 		//if(bounds.contains(x, y))
 		//	System.out.print("yay");
 		
