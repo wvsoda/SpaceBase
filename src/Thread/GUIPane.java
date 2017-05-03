@@ -27,7 +27,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	private boolean clicked;
 	private GameController gaco;
 	int time;
-	private final int winWidth = 900, winHeight = 506;
+	private final int winWidth = 1366, winHeight = 768;
 	String testing;
 	Menu openMenu;
 	
@@ -56,6 +56,10 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	
 	public void initReftoGUIPane(GameController gc, List<Entity> entities){
 		gaco = gc;
+		ents = entities;
+	}
+	
+	public void initReftoGUIPane(List<Entity> entities){
 		ents = entities;
 	}
 	

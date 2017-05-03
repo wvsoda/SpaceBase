@@ -16,6 +16,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import Entities.*;
+import Levels.*;
 public class ImportManager {
 	public ClassLoader cldr;
 	public static Image ship, tomShip, noimage, blank, menu;
@@ -41,6 +42,7 @@ public class ImportManager {
 		
 		try {
             File file = new File("RickAstley.wav");
+            
             if (file.exists()) {
                 AudioInputStream sound = AudioSystem.getAudioInputStream(file);
              // load the sound into memory (a Clip)
@@ -115,13 +117,21 @@ public class ImportManager {
 		
 	
 	
-	public static ArrayList<Entity> initEnts(){
-		Ship e = new Ship(200,100,390,500,0); 
+	public static ArrayList<level> initLevels(){
+		/*Ship e = new Ship(300,200,390,500,0); 
 		ArrayList<Entity> ents = new ArrayList<Entity>();
 
 		ents.add(e);
 		
 		return ents;
+		*/
+		startMenu e = new startMenu();
+		
+		ArrayList<level> lvls = new ArrayList<level>();
+		
+		lvls.add(e);
+		
+		return lvls;
 	}
 	
 	public static Image getImage(String img){
