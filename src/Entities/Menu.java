@@ -6,9 +6,17 @@ import java.util.ArrayList;
 
 public class Menu extends PolyEntity {
 	boolean opened;
-	public Menu(int x, int y, int w, int h,
-			ArrayList<Entity> coms) {
-		super(x, y, h, w, 0, "menu", coms);
+	boolean componentsTranslated;
+	public Menu(int x, int y, int w, int h, ArrayList<Entity> coms) {
+		super(x, y, h, w, 0, "blankimg", coms);
+		if (!componentsTranslated){
+			for (Entity e : components){
+				e.xCoord = e.xCoord + x;
+				System.out.println("xCoord after fixing"+e.xCoord);
+				e.yCoord = e.yCoord + y;
+			}
+		componentsTranslated = true;
+		}
 		opened = false;
 		int[] xs = {x,x,x+w,x+w};
 		int[] ys = {y,y+h,y+h,y};
@@ -22,7 +30,10 @@ public class Menu extends PolyEntity {
 	
 	@Override
 	public void whenClicked(int x, int y) {
-		System.out.println("foik");
+		System.out.println("Menu Clicked");
+		for (Entity e : components){
+			e.checkBounds(x, y);
+		}
 
 	}
 	
@@ -36,6 +47,11 @@ public class Menu extends PolyEntity {
 	
 	public void close(){
 		opened = false;
+		for (Entity e : components){
+			e.xCoord = e.xCoord - xCoord;
+			System.out.println("xCoord after closing "+e.xCoord);
+			e.yCoord = e.yCoord - yCoord;
+		}
 	}
 
 }

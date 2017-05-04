@@ -118,13 +118,6 @@ public class ImportManager {
 	
 	
 	public static ArrayList<level> initLevels(){
-		/*Ship e = new Ship(300,200,390,500,0); 
-		ArrayList<Entity> ents = new ArrayList<Entity>();
-
-		ents.add(e);
-		
-		return ents;
-		*/
 		startMenu e = new startMenu();
 		
 		ArrayList<level> lvls = new ArrayList<level>();

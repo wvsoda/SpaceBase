@@ -3,6 +3,7 @@ package Entities;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.util.ArrayList;
+import Entities.Button;
 
 public class ShipModule extends Entity implements MenuSpawnable{
 
@@ -10,12 +11,20 @@ public class ShipModule extends Entity implements MenuSpawnable{
 	String moduleType;
 	int relX, relY;
 	boolean menuOpened;
+	
 	public ShipModule(Polygon b, String modType, int topX, int topY) {
 		super(topX,topY,0,0, 0.0, "");
 		moduleType = modType;
 		bounds = b;
 		resources = new ArrayList<Entity>();
 		menuOpened = false;
+		
+		Button dd = new Button(50,100,50,100,"","Option 1");
+		Button fd = new Button(50,200,50,100,"","Option 2");
+		Button gd = new Button(50,300,50,100,"","Option 3");
+		resources.add(dd);
+		resources.add(fd);
+		resources.add(gd);
 	}
 
 	@Override
@@ -38,7 +47,7 @@ public class ShipModule extends Entity implements MenuSpawnable{
 	@Override 
 	public Menu spawnMenu() {
 		if(menuOpened)
-			return new Menu(xCoord+200, yCoord-50, 182,207, resources);
+			return new Menu(xCoord+200, yCoord-50, 200,450, resources);
 		return null;
 	}
 

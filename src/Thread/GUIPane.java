@@ -165,6 +165,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 		else{
 			if(!openMenu.checkBounds(clickedX, clickedY)){
 				ents.remove(openMenu);
+				openMenu.close();
 				openMenu = null;
 			}
 		}

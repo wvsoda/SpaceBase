@@ -11,7 +11,10 @@ public class startMenu extends level {
 		ents.add(e);
 		
 		ArrayList<Entity> g = new ArrayList<Entity>();
+		Button k = new Button (0,0,50,200,"","Start");
+		g.add(k);
 		Menu f = new Menu(700,600,200,50,g);
+
 		ents.add(f);
 	}
 
