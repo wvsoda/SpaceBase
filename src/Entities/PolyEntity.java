@@ -41,7 +41,7 @@ public abstract class PolyEntity extends Entity {
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		g.drawImage(ImportManager.getImage(image), xCoord, yCoord, height, width, null);
+		g.drawImage(ImportManager.getImage(image), xCoord, yCoord, width, height, null);
 		for(Entity e : components){
 			e.draw(g);
 		}

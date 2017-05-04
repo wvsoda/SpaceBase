@@ -9,7 +9,7 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	ShipModule clicked;
 	
 	public Ship(int x, int y, int h, int w, double angel){
-		super(0, 0, h, w, angel, "tomShip", null);
+		super(0, 0, h, w, angel, "ship", null);
 		int[] shipX = {0,115,115,275,275,385,385,310,310,80,80,0};
 		int[] shipY = {100,100,35,35,100,100,340,340,490,490,345,345};
 		int[] EngineRx = {300,385,385,300};

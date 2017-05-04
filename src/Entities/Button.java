@@ -23,7 +23,7 @@ public class Button extends Entity{
 
 	@Override
 	public void draw(Graphics g) {
-		textX = (width/2)+xCoord;
+		textX = (width/2)+xCoord - (buttonText.length()*3);
 		textY = (height/2)+yCoord;
 		int[] polyx = {xCoord,xCoord+width,xCoord+width,xCoord};
 		int[] polyy = {yCoord,yCoord,yCoord+height,yCoord+height};

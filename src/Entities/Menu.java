@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class Menu extends PolyEntity {
 	boolean opened;
 	boolean componentsTranslated;
-	public Menu(int x, int y, int w, int h, ArrayList<Entity> coms) {
-		super(x, y, h, w, 0, "blankimg", coms);
+	public Menu(int x, int y, int w, int h, ArrayList<Entity> coms, String img) {
+		super(x, y, h, w, 0, img, coms);
 		if (!componentsTranslated){
 			for (Entity e : components){
 				e.xCoord = e.xCoord + x;

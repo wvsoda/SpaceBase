@@ -19,9 +19,9 @@ public class ShipModule extends Entity implements MenuSpawnable{
 		resources = new ArrayList<Entity>();
 		menuOpened = false;
 		
-		Button dd = new Button(50,100,50,100,"","Option 1");
-		Button fd = new Button(50,200,50,100,"","Option 2");
-		Button gd = new Button(50,300,50,100,"","Option 3");
+		Button dd = new Button(25,30,30,100,"","Option 1");
+		Button fd = new Button(25,90,30,100,"","Option 2");
+		Button gd = new Button(25,150,30,100,"","Option 3");
 		resources.add(dd);
 		resources.add(fd);
 		resources.add(gd);
@@ -47,7 +47,7 @@ public class ShipModule extends Entity implements MenuSpawnable{
 	@Override 
 	public Menu spawnMenu() {
 		if(menuOpened)
-			return new Menu(xCoord+200, yCoord-50, 200,450, resources);
+			return new Menu(xCoord+200, yCoord-50, 150,210, resources,"blank");
 		return null;
 	}
 
