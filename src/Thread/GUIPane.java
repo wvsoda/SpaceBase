@@ -27,7 +27,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	private boolean clicked;
 	private GameController gaco;
 	int time;
-	private final int winWidth = 900, winHeight = 506;
+	private final int winWidth = 1366, winHeight = 768;
 	String testing;
 	Menu openMenu;
 	
@@ -59,6 +59,10 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 		ents = entities;
 	}
 	
+	public void initReftoGUIPane(List<Entity> entities){
+		ents = entities;
+	}
+	
 	public void paint(Graphics g)
     {
         // gra = g;
@@ -82,11 +86,17 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
     {
     	for(Entity e : ents){
     		Integer[] is = {clickedX, clickedY};
-    		e.tickAction(is);
+    		//e.tickAction(is);
+    		try{
     		e.draw(g);
+    		}
+    		catch(NullPointerException ef){
+    			System.out.println("fuck");
+    		}
     		g.drawPolygon(e.returnBounds());
     		
     	}
+    	System.out.println(ents.size());
     	g.setColor(Color.BLUE);
     	g.drawString(testing, clickedX, clickedY);
     	
@@ -152,8 +162,8 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 		boolean menuOpen = false;
 		if(openMenu == null)
 			for(Entity x : ents){
-				x.checkBounds(clickedX, clickedY);
-				if(x instanceof MenuSpawnable){
+				
+				if(x.checkBounds(clickedX, clickedY) && x instanceof MenuSpawnable){
 					openMenu = ((MenuSpawnable)x).spawnMenu();
 					menuOpen = true;
 				}
@@ -161,6 +171,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 		else{
 			if(!openMenu.checkBounds(clickedX, clickedY)){
 				ents.remove(openMenu);
+				//openMenu.close();
 				openMenu = null;
 			}
 		}

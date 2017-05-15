@@ -2,13 +2,13 @@ package Entities;
 
 import java.awt.Polygon;
 import java.util.ArrayList;
+import importing.ImportManager;
 
 public class Ship extends PolyEntity implements MenuSpawnable {
 
-	ShipModule clicked;
 	
 	public Ship(int x, int y, int h, int w, double angel){
-		super(0, 0, h, w, angel, "tomShip", null);
+		super(0, 0, h, w, angel, "ship", null);
 		int[] shipX = {0,115,115,275,275,385,385,310,310,80,80,0};
 		int[] shipY = {100,100,35,35,100,100,340,340,490,490,345,345};
 		int[] EngineRx = {300,385,385,300};
@@ -42,25 +42,13 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	@Override
 	public void tickAction(Object b) {
 		//Integer[] is = ((Integer[])b);
-		for(Entity e : components){
-			e.tickAction(b);
-		}
 		
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
-		boolean done = false;
-		int i = 0;
-		while(!done && i < components.size()){
-			ShipModule e= (ShipModule) components.get(i);
-			if(e.checkBounds(x,y)){
-				clicked = e;
-				done = true;
-			}
-			else
-				i++;
-		}
+		super.whenClicked(x, y);
+		ImportManager.playSound();
 		//if(bounds.contains(x, y))
 		//	System.out.print("yay");
 		
@@ -70,7 +58,7 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
 		try{
-			return clicked.spawnMenu();
+			return ((ShipModule)clicked).spawnMenu();
 		}
 	    catch(NullPointerException e){
 	    	System.out.println("Your shit's null boi");
