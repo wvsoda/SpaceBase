@@ -1,32 +1,43 @@
 package Entities;
 
-import importing.ImportManager;
-
 import java.awt.Graphics;
+import java.awt.Polygon;
 
-public class Button extends Entity {
+public class Button extends Entity{
 
-	public Button(int x, int y, int h, int w, double angel, String img) {
-		super(x, y, h, w, angel, "blankimage");
-		// TODO Auto-generated constructor stub
+	String buttonText;
+	int textX;
+	int textY;
+	
+	public Button(int x, int y, int h, int w, String img, String text) {
+		super(x, y, h, w, 0, img);
+		buttonText = text;
+		
 	}
 
 	@Override
 	public void tickAction(Object b) {
-		System.out.println("butt");
-
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.drawImage(ImportManager.getImage(image), xCoord, yCoord, width, height, null);
-
+		textX = (width/2)+xCoord - (buttonText.length()*3);
+		textY = (height/2)+yCoord;
+		int[] polyx = {xCoord,xCoord+width,xCoord+width,xCoord};
+		int[] polyy = {yCoord,yCoord,yCoord+height,yCoord+height};
+		bounds = new Polygon(polyx,polyy, polyx.length);
+		
+		g.drawString(buttonText, textX, textY);
+		g.drawPolygon(bounds);
+		
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Button clicked: "+buttonText);
+		
 	}
 
 }

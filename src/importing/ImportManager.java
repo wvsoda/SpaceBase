@@ -16,9 +16,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import Entities.*;
+import Levels.*;
 public class ImportManager {
 	public ClassLoader cldr;
-	public static Image ship, tomShip, noimage, blank, menu;
+	public static Image ship, noimage, blank, menu;
 	public static Clip clip;
 	//public Polygon rightMod;
 	//public static Location[][] grid;
@@ -28,13 +29,11 @@ public class ImportManager {
 		//grid = new Location[38][36];
 		//cldr = this.getClass().getClassLoader();
 		//Media hi;
-		ImageIcon shipIcon = new ImageIcon("ship.png");
 		ImageIcon tomShipIcon = new ImageIcon("tomShip.png");
 		ImageIcon noImgIcon = new ImageIcon("noimage.png");
 		ImageIcon blankImgIcon = new ImageIcon("blankimg.png");
 		ImageIcon menuImgIcon = new ImageIcon("menuImg.png");
-		ship = shipIcon.getImage();
-		tomShip = tomShipIcon.getImage();
+		ship = tomShipIcon.getImage();
 		noimage = noImgIcon.getImage();
 		blank = blankImgIcon.getImage();
 		menu = menuImgIcon.getImage();
@@ -112,24 +111,21 @@ public class ImportManager {
 	        // used because it can only flush out a line of data already performed.
 	        clip.close();
 	    }*/
-		
 	
-	
-	public static ArrayList<Entity> initEnts(){
-		Ship e = new Ship(200,100,390,500,0); 
-		ArrayList<Entity> ents = new ArrayList<Entity>();
-
-		ents.add(e);
+	public static ArrayList<level> initLevels(){
+		startMenu e = new startMenu();
 		
-		return ents;
+		ArrayList<level> lvls = new ArrayList<level>();
+		
+		lvls.add(e);
+		
+		return lvls;
 	}
 	
 	public static Image getImage(String img){
 		if(img.equals("ship"))
 			return ship;
-		else if(img.equals("tomShip"))
-			return tomShip;
-		else if(img.equals("blankimg"))
+		else if(img.equals("blank"))
 			return blank;
 		else if(img.equals("menu"))
 			return menu;
