@@ -20,7 +20,7 @@ import Levels.*;
 public class ImportManager {
 	public ClassLoader cldr;
 	public static Image ship, noimage, blank, menu;
-	public static Clip clip;
+	public static Clip clip, clip2;
 	//public Polygon rightMod;
 	//public static Location[][] grid;
 	
@@ -112,13 +112,13 @@ public class ImportManager {
 	        clip.close();
 	    }*/
 	
-	public static ArrayList<level> initLevels(){
-		startMenu e = new startMenu();
-		
-		ArrayList<level> lvls = new ArrayList<level>();
+	public static ArrayList<Level> initLevels(){
+		StartMenu e = new StartMenu();
+		IdleLevel i = new IdleLevel();
+		ArrayList<Level> lvls = new ArrayList<Level>();
 		
 		lvls.add(e);
-		
+		lvls.add(i);
 		return lvls;
 	}
 	

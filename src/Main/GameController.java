@@ -18,7 +18,7 @@ public class GameController {
 	GUIManager gui;// = new GUIManager();
 	boolean menuOpen;
 	List<Entity> ents;
-	List<level> levels;
+	List<Levels.Level> levels;
 	int currentLevel;
 	public GameController (){
 		currentLevel = 0;
@@ -48,6 +48,7 @@ public class GameController {
 		if(levels.get(currentLevel).objectiveMet()){
 			currentLevel++;
 			g.initReftoGUIPane(levels.get(currentLevel).getEnts());
+			//System.out.println("ayy ya did it!");
 		}
 	}
 }

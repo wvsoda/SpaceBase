@@ -8,11 +8,12 @@ public class Button extends Entity{
 	String buttonText;
 	int textX;
 	int textY;
+	private boolean clicked;
 	
 	public Button(int x, int y, int h, int w, String img, String text) {
 		super(x, y, h, w, 0, img);
 		buttonText = text;
-		
+		clicked = false;
 	}
 
 	@Override
@@ -37,7 +38,12 @@ public class Button extends Entity{
 	@Override
 	public void whenClicked(int x, int y) {
 		System.out.println("Button clicked: "+buttonText);
+		clicked = true;
 		
+	}
+	
+	public boolean isClicked(){
+		return clicked;
 	}
 
 }
