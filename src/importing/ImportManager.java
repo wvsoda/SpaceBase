@@ -18,7 +18,7 @@ import javax.swing.*;
 import Entities.*;
 public class ImportManager {
 	public ClassLoader cldr;
-	public static Image ship, tomShip, noimage, blank, menu;
+	public static Image ship, tomShip, noimage, blank, menu, button;
 	public static Clip clip;
 	//public Polygon rightMod;
 	//public static Location[][] grid;
@@ -33,11 +33,13 @@ public class ImportManager {
 		ImageIcon noImgIcon = new ImageIcon("noimage.png");
 		ImageIcon blankImgIcon = new ImageIcon("blankimg.png");
 		ImageIcon menuImgIcon = new ImageIcon("menuImg.png");
+		ImageIcon menuButtIcon = new ImageIcon("unselected.png");
 		ship = shipIcon.getImage();
 		tomShip = tomShipIcon.getImage();
 		noimage = noImgIcon.getImage();
 		blank = blankImgIcon.getImage();
 		menu = menuImgIcon.getImage();
+		button = menuButtIcon.getImage();
 		
 		try {
             File file = new File("RickAstley.wav");
@@ -133,6 +135,8 @@ public class ImportManager {
 			return blank;
 		else if(img.equals("menu"))
 			return menu;
+		else if(img.equals("button"))
+			return button;
 		else
 			return noimage;
 	}

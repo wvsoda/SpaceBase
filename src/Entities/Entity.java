@@ -21,6 +21,17 @@ public abstract class Entity {
 		image = img;
 	}
 	
+	public Entity(int x, int y, int h, int w){
+		xCoord = x;
+		yCoord = y;
+		height = h;
+		width = w;
+		angle = 0;
+		image = "";
+		int[] xs = {x,x+w,x+w,x};
+		int[] ys = {y,y,y+h,y+h};
+		bounds = new Polygon(xs,ys,4);
+	}
 	
 	public abstract void tickAction(Object b);
 	

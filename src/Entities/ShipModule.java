@@ -37,8 +37,12 @@ public class ShipModule extends Entity implements MenuSpawnable{
 
 	@Override 
 	public Menu spawnMenu() {
-		if(menuOpened)
-			return new Menu(xCoord+200, yCoord-50, 182,207, resources);
+		if(menuOpened){
+			//later create ship module sub classes
+			ArrayList<Entity> buttons = new ArrayList<Entity>();
+			buttons.add(new MenuButton(10,10,"butt1"));
+			return new Menu(xCoord+200, yCoord-50, 182,207, buttons);
+		}
 		return null;
 	}
 
