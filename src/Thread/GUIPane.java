@@ -3,6 +3,7 @@ package Thread;
 import Entities.*;
 import Main.GameController;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,13 +12,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
 import javax.swing.JFrame;
 
 public class GUIPane extends JFrame implements 
-ActionListener, KeyListener, MouseListener{
+ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	
 	private List<Entity> ents;
 	private char key;
@@ -27,6 +29,7 @@ ActionListener, KeyListener, MouseListener{
 	int time;
 	private final int winWidth = 900, winHeight = 506;
 	String testing;
+	Menu openMenu;
 	
 	public GUIPane(){
 		super("SpaceBase");
@@ -39,9 +42,11 @@ ActionListener, KeyListener, MouseListener{
         });
 		addKeyListener(this);
 		addMouseListener(this);
+		addMouseMotionListener(this);
 		this.setSize(winWidth, winHeight);
 		time =0;
 		testing = "";
+		openMenu = null;
 		
 	}
 	
@@ -82,6 +87,7 @@ ActionListener, KeyListener, MouseListener{
     		g.drawPolygon(e.returnBounds());
     		
     	}
+    	g.setColor(Color.BLUE);
     	g.drawString(testing, clickedX, clickedY);
     	
     }
@@ -90,22 +96,20 @@ ActionListener, KeyListener, MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		clickedX = e.getX();
 		clickedY = e.getY();
-		clicked = true;
-		System.out.print("wha");
-		for(Entity x : ents){
-			x.checkBounds(clickedX, clickedY);
-		}
+		clickActions();
+		
+		//System.out.println(e.getButton());
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
+
 	}
 
 	@Override
@@ -144,6 +148,27 @@ ActionListener, KeyListener, MouseListener{
 		//System.out.println("Hello Tim");
 	}
 	
+	private void clickActions(){
+		boolean menuOpen = false;
+		if(openMenu == null)
+			for(Entity x : ents){
+				
+				if(x.checkBounds(clickedX, clickedY) && x instanceof MenuSpawnable){
+					openMenu = ((MenuSpawnable)x).spawnMenu();
+					menuOpen = true;
+				}
+			}
+		else{
+			if(!openMenu.checkBounds(clickedX, clickedY)){
+				ents.remove(openMenu);
+				openMenu = null;
+			}
+		}
+		if(menuOpen)
+			ents.add(openMenu);
+		
+	}
+	
 	public boolean isClicked() {
 		if(clicked) {
 			clicked = false;
@@ -158,5 +183,26 @@ ActionListener, KeyListener, MouseListener{
 	
 	public int getClickedY() {
 		return clickedY;
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		clickedX = arg0.getX();
+		clickedY = arg0.getY();
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void removeFromEnts(Entity e) {
+		for(int i=0; i<ents.size(); i++)
+			if(e == ents.get(i)){
+				ents.remove(i);
+				i--;
+			}				
 	}
 }
