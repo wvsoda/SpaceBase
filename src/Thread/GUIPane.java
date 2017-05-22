@@ -59,6 +59,11 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 		ents = entities;
 	}
 	
+	public void initReftoGUIPane(List<Entity> entities){
+		//gaco = gc;
+		ents = entities;
+	}
+	
 	public void paint(Graphics g)
     {
         // gra = g;

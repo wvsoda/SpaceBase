@@ -40,7 +40,7 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 
 	@Override
 	public void tickAction(Object b) {
-		//Integer[] is = ((Integer[])b);
+		this.moveTo(xCoord+1, yCoord+1, 0);
 		
 		
 	}	
@@ -62,6 +62,11 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	    	return null;
 	    }
 	}
-
+	
+	public boolean engineClicked(){
+		if(clicked != null)
+			return ((ShipModule)clicked).modType().equals("EngineL");
+		return false;
+	}
 
 }

@@ -1,13 +1,22 @@
 package importing;
 
 import java.applet.AudioClip;
+
+
+
+
+
+
 import javafx.scene.media.*;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+//import java.util.logging.Level;
+
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.AudioInputStream;
@@ -16,6 +25,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import Entities.*;
+import Levels.*;
+//import Levels.*;
 public class ImportManager {
 	public ClassLoader cldr;
 	public static Image ship, tomShip, noimage, blank, menu, button;
@@ -117,13 +128,18 @@ public class ImportManager {
 		
 	
 	
-	public static ArrayList<Entity> initEnts(){
-		Ship e = new Ship(200,100,390,500,0); 
-		ArrayList<Entity> ents = new ArrayList<Entity>();
-
-		ents.add(e);
+	public static ArrayList<Level> initLevels(){
+		//Ship e = new Ship(200,100,390,500,0); 
+		//Entity m = new MenuButton(300,300,"fuck");
+		Level zero = new Level0(), one = new Level1();
 		
-		return ents;
+		ArrayList<Level> lvls = new ArrayList<Level>();
+
+		lvls.add(zero);
+		lvls.add(one);
+		//ents.add(m);
+		
+		return lvls;
 	}
 	
 	public static Image getImage(String img){

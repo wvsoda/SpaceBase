@@ -45,5 +45,9 @@ public class ShipModule extends Entity implements MenuSpawnable{
 		}
 		return null;
 	}
-
+	
+	public String modType(){
+		return moduleType;
+	}
+	
 }
