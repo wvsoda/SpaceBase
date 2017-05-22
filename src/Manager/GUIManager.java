@@ -25,6 +25,10 @@ public class GUIManager {
 		gui.initReftoGUIPane(gc, ents);
 	}
 	
+	public void initReftoGUIPane(List<Entity> ents){
+		gui.initReftoGUIPane(ents);
+	}
+	
 	public GUIPane getThis(){
 		return gui;
 	}

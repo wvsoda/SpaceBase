@@ -6,10 +6,12 @@ import java.awt.Polygon;
 
 public class MenuButton extends Entity{
 	String option;
+	boolean clicked;
 	public MenuButton(int topX, int topY, String opt) {
 		super(topX, topY, 50, 162);
 		option = opt;
-		System.out.println("may ass");
+		//System.out.println("may ass");
+		clicked = false;
 	}
 
 	@Override
@@ -30,8 +32,13 @@ public class MenuButton extends Entity{
 
 	@Override
 	public void whenClicked(int x, int y) {
-		System.out.println(option + "clicked");
+		//System.out.println(option + "clicked");
+		clicked = true;
 		
 	}
-
+	
+	public boolean clicked(){
+		return clicked;
+	}
+	
 }
