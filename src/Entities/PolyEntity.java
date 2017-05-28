@@ -9,7 +9,7 @@ public abstract class PolyEntity extends Entity {
 	ArrayList<Entity> components;
 	Entity clicked;
 	
-	PolyEntity(int x, int y, int h, int w, double angel, String img, ArrayList<Entity> coms){
+	protected PolyEntity(int x, int y, int h, int w, double angel, String img, ArrayList<Entity> coms){
 		super(x, y, h, w, angel, img);
 		components = coms;
 		clicked = null;
@@ -51,8 +51,6 @@ public abstract class PolyEntity extends Entity {
 				i++;
 		}
 		ImportManager.playSound();
-		//if(bounds.contains(x, y))
-		//	System.out.print("yay");
 		
 	}
 

@@ -33,7 +33,6 @@ public abstract class Entity {
 		bounds = new Polygon(xs,ys,4);
 	}
 	
-	public abstract void tickAction(Object b);
 	
 	public abstract void draw(Graphics g);
 	
@@ -61,6 +60,14 @@ public abstract class Entity {
 		return bounds;
 	}
 	
+	public int getX(){
+		return xCoord;
+	}
+	
+	public int getY(){
+		return yCoord;
+	}
+	
 	public boolean checkBounds(int xClick, int yClick){
 		if(bounds.contains(xClick, yClick)){
 			whenClicked(xClick, yClick);
@@ -74,4 +81,6 @@ public abstract class Entity {
 	}
 	
 	public abstract void whenClicked(int x, int y);
+	
+	//public void whenHovered(){}
 	}

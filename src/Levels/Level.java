@@ -21,4 +21,6 @@ public abstract class Level {
 		return ents;
 	}
 
+	public abstract void tickAction();
+
 }

@@ -2,6 +2,8 @@ package Entities;
 
 import java.awt.Polygon;
 import java.util.ArrayList;
+
+import Entities.Menus.Menu;
 import importing.ImportManager;
 
 public class Ship extends PolyEntity implements MenuSpawnable {
@@ -38,12 +40,6 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 		//components
 	}
 
-	@Override
-	public void tickAction(Object b) {
-		this.moveTo(xCoord+1, yCoord+1, 0);
-		
-		
-	}	
 	
 	@Override
 	public void whenClicked(int x, int y){

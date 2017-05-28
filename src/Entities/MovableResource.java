@@ -20,11 +20,6 @@ public class MovableResource extends Entity {
 		return id;
 	}
 
-	@Override
-	public void tickAction(Object b) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void draw(Graphics g) {

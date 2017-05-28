@@ -15,4 +15,10 @@ public class Level0 extends Level {
 		return ((MenuButton)ents.get(0)).clicked();
 	}
 
+	@Override
+	public void tickAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
