@@ -7,10 +7,12 @@ import java.util.ArrayList;
 
 public abstract class PolyEntity extends Entity {
 	ArrayList<Entity> components;
+	Entity clicked;
 	
-	PolyEntity(int x, int y, int h, int w, double angel, String img, ArrayList<Entity> coms){
+	protected PolyEntity(int x, int y, int h, int w, double angel, String img, ArrayList<Entity> coms){
 		super(x, y, h, w, angel, img);
 		components = coms;
+		clicked = null;
 	}
 	
 	@Override
@@ -36,7 +38,21 @@ public abstract class PolyEntity extends Entity {
 	}
 	
 	@Override
-	public abstract void tickAction(Object b);
+	public void whenClicked(int x, int y) {
+		boolean done = false;
+		int i = 0;
+		while(!done && i < components.size()){
+			Entity e = components.get(i);
+			if(e.checkBounds(x,y)){
+				clicked = e;
+				done = true;
+			}
+			else
+				i++;
+		}
+		ImportManager.playSound();
+		
+	}
 
 	@Override
 	public void draw(Graphics g) {

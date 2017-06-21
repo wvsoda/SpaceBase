@@ -1,6 +1,8 @@
 package Thread;
 
 import Entities.*;
+import Entities.Menus.Menu;
+import Levels.Level;
 import Main.GameController;
 
 import java.awt.Color;
@@ -22,6 +24,8 @@ public class GUIPane extends JFrame implements
 ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	
 	private List<Entity> ents;
+	//private List<level> lvl;
+	private int currentLevel;
 	private char key;
 	private int clickedX, clickedY;
 	private boolean clicked;
@@ -60,6 +64,10 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	}
 	
 	public void initReftoGUIPane(List<Entity> entities){
+<<<<<<< HEAD
+=======
+		//gaco = gc;
+>>>>>>> 9896681c5f4e4510ef9fa9730fe356eb4648b462
 		ents = entities;
 	}
 	
@@ -84,13 +92,15 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 
     public void paintOffScreen(Graphics g)
     {
+    	Level p = gaco.levels.get(gaco.currentLevel);
     	for(Entity e : ents){
     		Integer[] is = {clickedX, clickedY};
-    		e.tickAction(is);
     		e.draw(g);
     		g.drawPolygon(e.returnBounds());
     		
     	}
+    	
+    	p.tickAction();
     	g.setColor(Color.BLUE);
     	g.drawString(testing, clickedX, clickedY);
     	
@@ -200,6 +210,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		//arg0.
 		
 	}
 	

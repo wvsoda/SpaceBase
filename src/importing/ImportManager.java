@@ -1,13 +1,22 @@
 package importing;
 
 import java.applet.AudioClip;
+
+
+
+
+
+
 import javafx.scene.media.*;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+//import java.util.logging.Level;
+
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.AudioInputStream;
@@ -17,9 +26,13 @@ import javax.swing.*;
 
 import Entities.*;
 import Levels.*;
+<<<<<<< HEAD
+=======
+//import Levels.*;
+>>>>>>> 9896681c5f4e4510ef9fa9730fe356eb4648b462
 public class ImportManager {
 	public ClassLoader cldr;
-	public static Image ship, tomShip, noimage, blank, menu;
+	public static Image ship, tomShip, noimage, blank, menu, button;
 	public static Clip clip;
 	//public Polygon rightMod;
 	//public static Location[][] grid;
@@ -33,10 +46,17 @@ public class ImportManager {
 		ImageIcon noImgIcon = new ImageIcon("noimage.png");
 		ImageIcon blankImgIcon = new ImageIcon("blankimg.png");
 		ImageIcon menuImgIcon = new ImageIcon("menuImg.png");
+<<<<<<< HEAD
 		ship = tomShipIcon.getImage();
+=======
+		ImageIcon menuButtIcon = new ImageIcon("unselected.png");
+		ship = shipIcon.getImage();
+		tomShip = tomShipIcon.getImage();
+>>>>>>> 9896681c5f4e4510ef9fa9730fe356eb4648b462
 		noimage = noImgIcon.getImage();
 		blank = blankImgIcon.getImage();
 		menu = menuImgIcon.getImage();
+		button = menuButtIcon.getImage();
 		
 		try {
             File file = new File("RickAstley.wav");
@@ -115,12 +135,25 @@ public class ImportManager {
 		
 	
 	
+<<<<<<< HEAD
 	public static ArrayList<level> initLevels(){
 		startMenu e = new startMenu();
 		
 		ArrayList<level> lvls = new ArrayList<level>();
 		
 		lvls.add(e);
+=======
+	public static ArrayList<Level> initLevels(){
+		//Ship e = new Ship(200,100,390,500,0); 
+		//Entity m = new MenuButton(300,300,"fuck");
+		Level zero = new Level0(), one = new Level1();
+		
+		ArrayList<Level> lvls = new ArrayList<Level>();
+
+		lvls.add(zero);
+		lvls.add(one);
+		//ents.add(m);
+>>>>>>> 9896681c5f4e4510ef9fa9730fe356eb4648b462
 		
 		return lvls;
 	}
@@ -132,6 +165,8 @@ public class ImportManager {
 			return blank;
 		else if(img.equals("menu"))
 			return menu;
+		else if(img.equals("button"))
+			return button;
 		else
 			return noimage;
 	}

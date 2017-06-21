@@ -2,11 +2,11 @@ package Entities;
 
 import java.awt.Polygon;
 import java.util.ArrayList;
+
+import Entities.Menus.Menu;
 import importing.ImportManager;
 
 public class Ship extends PolyEntity implements MenuSpawnable {
-
-	ShipModule clicked;
 	
 	public Ship(int x, int y, int h, int w, double angel){
 		super(0, 0, h, w, angel, "ship", null);
@@ -36,47 +36,33 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 		components.add(new ShipModule(new Polygon((mainEngineX), (mainEngineY), mainEngineX.length), 
 				"MainEngine", smallest(mainEngineX), smallest(mainEngineY)));
 		moveTo(x, y, 0);
-		clicked = null;
+		//clicked = null;
 		//components
 	}
 
+	
 	@Override
-	public void tickAction(Object b) {
-		//Integer[] is = ((Integer[])b);
-		
-		
-	}
-
-	@Override
-	public void whenClicked(int x, int y) {
-		boolean done = false;
-		int i = 0;
-		while(!done && i < components.size()){
-			ShipModule e= (ShipModule) components.get(i);
-			if(e.checkBounds(x,y)){
-				clicked = e;
-				done = true;
-			}
-			else
-				i++;
-		}
+	public void whenClicked(int x, int y){
+		super.whenClicked(x, y);
 		ImportManager.playSound();
-		//if(bounds.contains(x, y))
-		//	System.out.print("yay");
-		
 	}
-
+	
 	@Override
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
 		try{
-			return clicked.spawnMenu();
+			return ((ShipModule)clicked).spawnMenu();
 		}
 	    catch(NullPointerException e){
 	    	System.out.println("Your shit's null boi");
 	    	return null;
 	    }
 	}
-
+	
+	public boolean engineClicked(){
+		if(clicked != null)
+			return ((ShipModule)clicked).modType().equals("EngineL");
+		return false;
+	}
 
 }
