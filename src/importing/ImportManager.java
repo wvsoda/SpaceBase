@@ -26,14 +26,13 @@ import javax.swing.*;
 
 import Entities.*;
 import Levels.*;
-<<<<<<< HEAD
-=======
-//import Levels.*;
->>>>>>> 9896681c5f4e4510ef9fa9730fe356eb4648b462
+
+
 public class ImportManager {
 	public ClassLoader cldr;
-	public static Image ship, tomShip, noimage, blank, menu, button;
-	public static Clip clip;
+	public static Image ship, noimage, blank, menu, button;
+	public static Clip rick, equip,unequip,click;
+	public AudioInputStream sound;
 	//public Polygon rightMod;
 	//public static Location[][] grid;
 	
@@ -42,30 +41,55 @@ public class ImportManager {
 		//grid = new Location[38][36];
 		//cldr = this.getClass().getClassLoader();
 		//Media hi;
-		ImageIcon tomShipIcon = new ImageIcon("tomShip.png");
 		ImageIcon noImgIcon = new ImageIcon("noimage.png");
 		ImageIcon blankImgIcon = new ImageIcon("blankimg.png");
 		ImageIcon menuImgIcon = new ImageIcon("menuImg.png");
-<<<<<<< HEAD
-		ship = tomShipIcon.getImage();
-=======
-		ImageIcon menuButtIcon = new ImageIcon("unselected.png");
+		ImageIcon menuButtIcon = new ImageIcon("button1.png");
+		ImageIcon shipIcon = new ImageIcon("tomShip.png");
 		ship = shipIcon.getImage();
-		tomShip = tomShipIcon.getImage();
->>>>>>> 9896681c5f4e4510ef9fa9730fe356eb4648b462
 		noimage = noImgIcon.getImage();
 		blank = blankImgIcon.getImage();
 		menu = menuImgIcon.getImage();
 		button = menuButtIcon.getImage();
 		
+		
 		try {
-            File file = new File("RickAstley.wav");
-            
-            if (file.exists()) {
-                AudioInputStream sound = AudioSystem.getAudioInputStream(file);
+            File file1 = new File("equip.wav");
+            if (file1.exists()) {
+                sound = AudioSystem.getAudioInputStream(file1);
              // load the sound into memory (a Clip)
-                clip = AudioSystem.getClip();
-                clip.open(sound);
+                equip = AudioSystem.getClip();
+                equip.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: equip.wav");
+            }
+            File file2 = new File("unequip.wav");
+            if (file2.exists()) {
+                sound = AudioSystem.getAudioInputStream(file2);
+             // load the sound into memory (a Clip)
+                unequip = AudioSystem.getClip();
+                unequip.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: unequip.wav");
+            }
+            File file3 = new File("menuclick1.wav");
+            if (file3.exists()) {
+                sound = AudioSystem.getAudioInputStream(file3);
+             // load the sound into memory (a Clip)
+                click = AudioSystem.getClip();
+                click.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: menuclick1.wav");
+            }
+            File file4 = new File("RickAstley.wav");
+            if (file4.exists()) {
+                sound = AudioSystem.getAudioInputStream(file4);
+             // load the sound into memory (a Clip)
+                rick = AudioSystem.getClip();
+                rick.open(sound);
             }
             else {
                 throw new RuntimeException("Sound: file not found: RickAstley.wav");
@@ -90,16 +114,35 @@ public class ImportManager {
 		
     // play, stop, loop the sound clip
     }
-    public static void playSound(){
-        clip.setFramePosition(0);  // Must always rewind!
-        clip.start();
+	
+	
+    public static void soundControl(String clipName, String action){
+    	Clip clip = null;
+    	switch (clipName){
+    		case "click" : clip = click;
+    		break;
+    		case "equip" : clip = equip;
+    		break;
+    		case "unequip" : clip = unequip;
+    		break;
+    		case "RickAstley" : clip = rick;
+    		break;
+    	}
+    	switch (action){
+    	case "play" :  
+    		clip.setFramePosition(0);  // Must always rewind!
+    		clip.start();
+    		break;
+    	case "loop" :
+    		clip.loop(Clip.LOOP_CONTINUOUSLY);
+    		break;
+    	case "stop" :
+    		clip.stop();
+    		break;
+    	default :
+    		System.out.println("soundControl Error: Invalid action");
+    	}
     }
-    public static void loop(){
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
-    }
-    public static void stop(){
-            clip.stop();
-        }
 		/*File file = new File("RickAstley.wav");
 		try {
             // Open a sound file stored in the project folder
@@ -135,25 +178,17 @@ public class ImportManager {
 		
 	
 	
-<<<<<<< HEAD
-	public static ArrayList<level> initLevels(){
-		startMenu e = new startMenu();
-		
-		ArrayList<level> lvls = new ArrayList<level>();
-		
-		lvls.add(e);
-=======
 	public static ArrayList<Level> initLevels(){
 		//Ship e = new Ship(200,100,390,500,0); 
 		//Entity m = new MenuButton(300,300,"fuck");
-		Level zero = new Level0(), one = new Level1();
+		Level zero = new Level0(), one = new Level1(), two = new Level2();
 		
 		ArrayList<Level> lvls = new ArrayList<Level>();
 
 		lvls.add(zero);
 		lvls.add(one);
+		lvls.add(two);
 		//ents.add(m);
->>>>>>> 9896681c5f4e4510ef9fa9730fe356eb4648b462
 		
 		return lvls;
 	}

@@ -1,4 +1,4 @@
-package Entities;
+	package Entities;
 
 import java.awt.Polygon;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	@Override
 	public void whenClicked(int x, int y){
 		super.whenClicked(x, y);
-		ImportManager.playSound();
+		ImportManager.soundControl("click","play");
 	}
 	
 	@Override
@@ -59,10 +59,8 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	    }
 	}
 	
-	public boolean engineClicked(){
-		if(clicked != null)
-			return ((ShipModule)clicked).modType().equals("EngineL");
-		return false;
+	public ArrayList<Entity> getModules(){
+		return components;
 	}
 
 }

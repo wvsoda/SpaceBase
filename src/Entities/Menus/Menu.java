@@ -12,14 +12,15 @@ import Entities.Entity;
 import Entities.MenuButton;
 import Entities.PolyEntity;
 import Entities.ShipModule;
+import importing.ImportManager;
 
-public class Menu extends PolyEntity {
+public abstract class Menu extends PolyEntity {
 	boolean opened;
 	String label;
 	Entity cont;
 	public Menu(int x, int y, int w, int h,
 			ArrayList<Entity> coms, String lab, Entity container) {
-		super(0,0, h, w, 0, "menu", coms);
+		super(0,0, h, w, 0, "button", coms);
 		opened = false;
 		int[] xs = {0,0,w,w};//{x,x,x+w,x+w};
 		int[] ys = {0,h,h,0};//{y,y+h,y+h,y};
@@ -44,6 +45,7 @@ public class Menu extends PolyEntity {
 		g.setColor(Color.WHITE);
 		g.drawRect(xCoord, yCoord, width, height);
 		super.draw(g);
+		labelUpdate();
 		g.setColor(Color.BLACK);
 		g.drawString(label, xCoord+15, yCoord+15);
 	}
@@ -59,5 +61,11 @@ public class Menu extends PolyEntity {
 	public void close(){
 		opened = false;
 	}
+
+
+	abstract public void buttonClick(String action);
+
+	abstract public void labelUpdate();
+
 
 }

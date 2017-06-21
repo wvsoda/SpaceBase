@@ -5,23 +5,30 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
+import Entities.Menus.*;
+import importing.ImportManager;
+
 public class MenuButton extends Entity{
-	String option;
+	String label;
 	boolean clicked;
-	public MenuButton(int topX, int topY, String opt) {
+	String soundOption;
+	Entity cont;
+	String buttonAction;
+	public MenuButton(int topX, int topY, String labe, String sound, String action, Entity container) {
 		super(topX, topY, 50, 162);
-		option = opt;
+		cont = container;
+		soundOption = sound;
+		label = labe;
 		clicked = false;
+		buttonAction = action;
 	}
 
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.CYAN);
-		g.fillRect(xCoord, yCoord, width, height);
-		g.setColor(Color.BLACK);
+		g.drawImage(ImportManager.button, xCoord, yCoord, width, height, null);
 		//g.setFont(Font.getFont(""));
-		g.drawString(option, xCoord+width/2, yCoord+height/2);
+		g.drawString(label, xCoord+width/2, yCoord+height/2);
 		g.drawString("\n"+xCoord+" "+yCoord, 100, 100);
 		
 	}
@@ -30,7 +37,10 @@ public class MenuButton extends Entity{
 	public void whenClicked(int x, int y) {
 		//System.out.println(option + "clicked");
 		clicked = true;
-		
+		if (cont instanceof Menu){
+			((Entities.Menus.Menu)cont).buttonClick(buttonAction);	
+		}
+		ImportManager.soundControl(soundOption, "play");
 	}
 	
 	public boolean clicked(){

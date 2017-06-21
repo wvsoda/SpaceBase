@@ -19,13 +19,8 @@ import Levels.*
 public class GameController {
 	GUIManager gui;// = new GUIManager();
 	boolean menuOpen;
-	public List<Level> levels;
+	public List<Levels.Level> levels;
 	List<Entity> ents;
-<<<<<<< HEAD
-	List<level> levels;
-	int currentLevel;
-	public GameController (){
-=======
 	public int currentLevel;
 	public GameController (){
 		/*gui = new GUIManager();
@@ -37,7 +32,7 @@ public class GameController {
 		JFrame realGui = gui.getThis();
 		
 		realGui.setVisible(true);*/
->>>>>>> 9896681c5f4e4510ef9fa9730fe356eb4648b462
+
 		currentLevel = 0;
 		gui = new GUIManager();
 		Timer t = gui.initTimer();

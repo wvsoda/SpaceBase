@@ -19,6 +19,9 @@ public abstract class Entity {
 		width = w;
 		angle = angel;
 		image = img;
+		int[] xs = {x,x+w,x+w,x};
+		int[] ys = {y,y,y+h,y+h};
+		bounds = new Polygon(xs,ys,4);
 	}
 	
 	public Entity(int x, int y, int h, int w){

@@ -17,10 +17,10 @@ public abstract class Level {
 	
 	public abstract boolean objectiveMet();
 	
+	public abstract void tickAction();
+	
 	public List<Entity> getEnts(){
 		return ents;
 	}
-
-	public abstract void tickAction();
 
 }

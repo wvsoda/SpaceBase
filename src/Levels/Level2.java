@@ -2,23 +2,22 @@ package Levels;
 
 import Entities.*;
 
-public class Level0 extends Level {
+public class Level2 extends Level {
 
-	public Level0() {
-		super();
-		ents.add(new MenuButton(300,300,"START","click","",null));
+	public Level2() {
+		ents.add(new textInstruction(100, 100, 0, 0, 0, "noimage", "congrat", 70));
 	}
 
 	@Override
 	public boolean objectiveMet() {
 		// TODO Auto-generated method stub
-		return ((MenuButton)ents.get(0)).clicked();
+		return false;
 	}
 
 	@Override
 	public void tickAction() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
