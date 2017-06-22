@@ -8,16 +8,12 @@ public class textInstruction extends Entity {
 
 	String text;
 	int textSize;
-	public textInstruction(int x, int y, int h, int w, double angel, String img, String txt, int txtsize) {
-		super(x, y, h, w, angel, img);
+	public textInstruction(int x, int y, double angel, String img, String txt, int txtsize) {
+		super(x, y, 0, 0, angel, img);
 		text = txt;
 		textSize = txtsize;
 	}
-
-	public textInstruction(int x, int y, int h, int w) {
-		super(x, y, h, w);
-	}
-
+	
 	@Override
 	public void draw(Graphics g) {
 		Font def = g.getFont();

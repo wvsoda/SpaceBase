@@ -5,7 +5,7 @@ import Entities.*;
 public class Level2 extends Level {
 
 	public Level2() {
-		ents.add(new textInstruction(100, 100, 0, 0, 0, "noimage", "congrat", 70));
+		ents.add(new textInstruction(100, 100, 0, "noimage", "congrat", 70));
 	}
 
 	@Override

@@ -6,7 +6,8 @@ public class Level0 extends Level {
 
 	public Level0() {
 		super();
-		ents.add(new MenuButton(300,300,"START","click","",null));
+		ents.add(new MenuButton(500,500,"START","click","",null));
+		ents.add(new textInstruction(300,300,0,"noimage","SPACE BASE",100));
 	}
 
 	@Override

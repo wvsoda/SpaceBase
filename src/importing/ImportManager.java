@@ -31,7 +31,7 @@ import Levels.*;
 public class ImportManager {
 	public ClassLoader cldr;
 	public static Image ship, noimage, blank, menu, button, masked,grid,rock,gold,uni;
-	public static Clip rick, equip,unequip,click;
+	public static Clip rick, equip,unequip,click,music;
 	public AudioInputStream sound;
 	//public Polygon rightMod;
 	//public static Location[][] grid;
@@ -41,31 +41,31 @@ public class ImportManager {
 		//grid = new Location[38][36];
 		//cldr = this.getClass().getClassLoader();
 		//Media hi;
-		ImageIcon noImgIcon = new ImageIcon("noimage.png");
+		ImageIcon noImgIcon = new ImageIcon("img/noimage.png");
 		noimage = noImgIcon.getImage();
-		ImageIcon blankImgIcon = new ImageIcon("blankimg.png");
+		ImageIcon blankImgIcon = new ImageIcon("img/blankimg.png");
 		blank = blankImgIcon.getImage();
-		ImageIcon menuImgIcon = new ImageIcon("menuImg.png");
+		ImageIcon menuImgIcon = new ImageIcon("img/menuImg.png");
 		menu = menuImgIcon.getImage();
-		ImageIcon menuButtIcon = new ImageIcon("button1.png");
+		ImageIcon menuButtIcon = new ImageIcon("img/button1.png");
 		button = menuButtIcon.getImage();
-		ImageIcon shipIcon = new ImageIcon("tomShip.png");
+		ImageIcon shipIcon = new ImageIcon("img/tomShip.png");
 		ship = shipIcon.getImage();
-		ImageIcon grayIcon = new ImageIcon("grayed.png");
+		ImageIcon grayIcon = new ImageIcon("img/grayed.png");
 		masked = grayIcon.getImage();
-		ImageIcon gridIcon = new ImageIcon("grid.png");
+		ImageIcon gridIcon = new ImageIcon("img/grid.png");
 		grid = gridIcon.getImage();
-		ImageIcon rockIcon = new ImageIcon("rock.png");
+		ImageIcon rockIcon = new ImageIcon("img/rock.png");
 		rock = rockIcon.getImage();
-		ImageIcon goldIcon = new ImageIcon("gold.png");
+		ImageIcon goldIcon = new ImageIcon("img/gold.png");
 		gold = goldIcon.getImage();
-		ImageIcon uniIcon = new ImageIcon("unicorn.png");
+		ImageIcon uniIcon = new ImageIcon("img/unicorn.png");
 		uni = uniIcon.getImage();
 		
 		
 		
 		try {
-            File file1 = new File("equip.wav");
+            File file1 = new File("sound/equip.wav");
             if (file1.exists()) {
                 sound = AudioSystem.getAudioInputStream(file1);
              // load the sound into memory (a Clip)
@@ -75,7 +75,7 @@ public class ImportManager {
             else {
                 throw new RuntimeException("Sound: file not found: equip.wav");
             }
-            File file2 = new File("unequip.wav");
+            File file2 = new File("sound/unequip.wav");
             if (file2.exists()) {
                 sound = AudioSystem.getAudioInputStream(file2);
              // load the sound into memory (a Clip)
@@ -85,7 +85,7 @@ public class ImportManager {
             else {
                 throw new RuntimeException("Sound: file not found: unequip.wav");
             }
-            File file3 = new File("menuclick1.wav");
+            File file3 = new File("sound/menuclick1.wav");
             if (file3.exists()) {
                 sound = AudioSystem.getAudioInputStream(file3);
              // load the sound into memory (a Clip)
@@ -95,7 +95,7 @@ public class ImportManager {
             else {
                 throw new RuntimeException("Sound: file not found: menuclick1.wav");
             }
-            File file4 = new File("RickAstley.wav");
+            File file4 = new File("sound/RickAstley.wav");
             if (file4.exists()) {
                 sound = AudioSystem.getAudioInputStream(file4);
              // load the sound into memory (a Clip)
@@ -104,6 +104,16 @@ public class ImportManager {
             }
             else {
                 throw new RuntimeException("Sound: file not found: RickAstley.wav");
+            }
+            File file5 = new File("sound/music.wav");
+            if (file5.exists()) {
+                sound = AudioSystem.getAudioInputStream(file5);
+             // load the sound into memory (a Clip)
+                music = AudioSystem.getClip();
+                music.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: music.wav");
             }
         }
         catch (MalformedURLException e) {
@@ -137,7 +147,13 @@ public class ImportManager {
     		case "unequip" : clip = unequip;
     		break;
     		case "RickAstley" : clip = rick;
+    		System.out.println("what the hell");
     		break;
+    		case "music" : clip = music;
+    		break;
+    		default:
+    			clip = unequip;
+    			break;
     	}
     	switch (action){
     	case "play" :  
