@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import Entities.Entity;
 import Entities.Ship;
-import Entities.ShipModule;
 import Entities.textInstruction;
+import Entities.ShipModule.ShipModule;
 
 public class Level1 extends Level {
 

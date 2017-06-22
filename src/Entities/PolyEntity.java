@@ -50,7 +50,7 @@ public abstract class PolyEntity extends Entity {
 			else
 				i++;
 		}
-		
+	
 	}
 
 	@Override

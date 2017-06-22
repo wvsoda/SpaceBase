@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import Entities.Entity;
 import Entities.MenuButton;
 import Entities.PolyEntity;
-import Entities.ShipModule;
+import Entities.ShipModule.ShipModule;
 import importing.ImportManager;
 
 public abstract class Menu extends PolyEntity {

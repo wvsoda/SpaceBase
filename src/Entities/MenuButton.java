@@ -14,6 +14,7 @@ public class MenuButton extends Entity{
 	String soundOption;
 	Entity cont;
 	String buttonAction;
+	public boolean clickable = true;
 	public MenuButton(int topX, int topY, String labe, String sound, String action, Entity container) {
 		super(topX, topY, 50, 162);
 		cont = container;
@@ -28,21 +29,25 @@ public class MenuButton extends Entity{
 	public void draw(Graphics g) {
 		g.drawImage(ImportManager.button, xCoord, yCoord, width, height, null);
 		//g.setFont(Font.getFont(""));
-		g.drawString(label, xCoord+width/2, yCoord+height/2);
+		g.drawString(label, (xCoord+width/2) - (label.length()*4), yCoord+height/2);
 		g.drawString("\n"+xCoord+" "+yCoord, 100, 100);
+		if (!clickable){
+			g.drawImage(ImportManager.masked, xCoord, yCoord, width, height, null);
+		}
 		
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
 		//System.out.println(option + "clicked");
-		clicked = true;
-		if (cont instanceof Menu){
-			((Entities.Menus.Menu)cont).buttonClick(buttonAction);	
+		if (clickable){
+			clicked = true;
+			if (cont instanceof Menu){
+				((Entities.Menus.Menu)cont).buttonClick(buttonAction);	
+			}
+			ImportManager.soundControl(soundOption, "play");
 		}
-		ImportManager.soundControl(soundOption, "play");
 	}
-	
 	public boolean clicked(){
 		return clicked;
 	}

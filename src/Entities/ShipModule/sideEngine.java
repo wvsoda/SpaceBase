@@ -1,27 +1,19 @@
-package Entities;
+package Entities.ShipModule;
 
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.util.ArrayList;
 
+import Entities.Entity;
 import Entities.Menus.Menu;
 import Entities.Menus.ShipModuleMenu;
 
-public class ShipModule extends Entity implements MenuSpawnable{
+public class sideEngine extends ShipModule {
 
-	ArrayList<Entity> resources;
-	String moduleType;
-	int relX, relY;
-	boolean menuOpened;
-	int modLevel;
-
-	public ShipModule(Polygon b, String modType, int topX, int topY) {
-		super(topX,topY,0,0, 0.0, "");
-		moduleType = modType;
-		bounds = b;
-		resources = new ArrayList<Entity>();
-		menuOpened = false;
-		modLevel = 0;
+	public sideEngine(Polygon b, String location, int topx, int topy) {
+		super(b, location + " Engine", topx, topy);
+		
+		System.out.println('.'+moduleType+'.');
 	}
 
 	@Override
@@ -40,18 +32,6 @@ public class ShipModule extends Entity implements MenuSpawnable{
 		}
 		return null;
 	}
-	
-	public String getModType(){
-		return moduleType;
-	}
-	
-	public int getLevel(){
-		return modLevel;
-	}
-	
-	public void upgrade(){
-		modLevel++;
-	}
 
 	@Override
 	public void draw(Graphics g) {
@@ -60,4 +40,3 @@ public class ShipModule extends Entity implements MenuSpawnable{
 	}
 
 }
-

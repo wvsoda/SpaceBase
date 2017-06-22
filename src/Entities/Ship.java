@@ -4,6 +4,7 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 
 import Entities.Menus.Menu;
+import Entities.ShipModule.*;
 import importing.ImportManager;
 
 public class Ship extends PolyEntity implements MenuSpawnable {
@@ -25,16 +26,22 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 		
 		components = new ArrayList<Entity>();
 		this.setBounds(new Polygon((shipX),(shipY),shipX.length));
-		components.add(new ShipModule(new Polygon(EngineRx,EngineLRy,EngineRx.length), 
-				"EngineR", smallest(EngineRx), smallest(EngineLRy)));
-		components.add(new ShipModule(new Polygon((EngineLx),(EngineLRy),EngineLRy.length), 
-				"EngineL", smallest(EngineLx), smallest(EngineLRy)));
-		components.add(new ShipModule(new Polygon((cockpitX), (cockpitY), cockpitX.length), 
-				"Cockpit", smallest(cockpitX), smallest(cockpitY)));
-		components.add(new ShipModule(new Polygon((storageX), (storageY), storageX.length), 
-				"Storage", smallest(storageX), smallest(storageY)));
-		components.add(new ShipModule(new Polygon((mainEngineX), (mainEngineY), mainEngineX.length), 
-				"MainEngine", smallest(mainEngineX), smallest(mainEngineY)));
+		components.add(new sideEngine(new Polygon(EngineRx,EngineLRy,EngineRx.length), 
+				"Right", smallest(EngineRx), smallest(EngineLRy)));
+		components.add(new sideEngine(new Polygon((EngineLx),(EngineLRy),EngineLRy.length), 
+				"Left", smallest(EngineLx), smallest(EngineLRy)));
+		components.add(new cockpit(new Polygon((cockpitX), (cockpitY), cockpitX.length), 
+				smallest(cockpitX), smallest(cockpitY)));
+		
+		ArrayList<Entity> itms = new ArrayList<Entity>();
+		itms.add(new MovableResource(6, "rock"));
+		itms.add(new MovableResource(8, "gold"));      /////// ITEMS for ship storage default as of RIGHT NOW
+		itms.add(new MovableResource(9,"unicorn"));
+		
+		components.add(new storage(new Polygon((storageX), (storageY), storageX.length), 
+				"Center", smallest(storageX), smallest(storageY),itms));
+		components.add(new mainEngine(new Polygon((mainEngineX), (mainEngineY), mainEngineX.length), 
+				smallest(mainEngineX), smallest(mainEngineY)));
 		moveTo(x, y, 0);
 		//clicked = null;
 		//components

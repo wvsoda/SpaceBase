@@ -30,7 +30,7 @@ import Levels.*;
 
 public class ImportManager {
 	public ClassLoader cldr;
-	public static Image ship, noimage, blank, menu, button;
+	public static Image ship, noimage, blank, menu, button, masked,grid,rock,gold,uni;
 	public static Clip rick, equip,unequip,click;
 	public AudioInputStream sound;
 	//public Polygon rightMod;
@@ -42,15 +42,26 @@ public class ImportManager {
 		//cldr = this.getClass().getClassLoader();
 		//Media hi;
 		ImageIcon noImgIcon = new ImageIcon("noimage.png");
+		noimage = noImgIcon.getImage();
 		ImageIcon blankImgIcon = new ImageIcon("blankimg.png");
+		blank = blankImgIcon.getImage();
 		ImageIcon menuImgIcon = new ImageIcon("menuImg.png");
+		menu = menuImgIcon.getImage();
 		ImageIcon menuButtIcon = new ImageIcon("button1.png");
+		button = menuButtIcon.getImage();
 		ImageIcon shipIcon = new ImageIcon("tomShip.png");
 		ship = shipIcon.getImage();
-		noimage = noImgIcon.getImage();
-		blank = blankImgIcon.getImage();
-		menu = menuImgIcon.getImage();
-		button = menuButtIcon.getImage();
+		ImageIcon grayIcon = new ImageIcon("grayed.png");
+		masked = grayIcon.getImage();
+		ImageIcon gridIcon = new ImageIcon("grid.png");
+		grid = gridIcon.getImage();
+		ImageIcon rockIcon = new ImageIcon("rock.png");
+		rock = rockIcon.getImage();
+		ImageIcon goldIcon = new ImageIcon("gold.png");
+		gold = goldIcon.getImage();
+		ImageIcon uniIcon = new ImageIcon("unicorn.png");
+		uni = uniIcon.getImage();
+		
 		
 		
 		try {
@@ -202,6 +213,14 @@ public class ImportManager {
 			return menu;
 		else if(img.equals("button"))
 			return button;
+		else if (img.equals("grid"))
+			return grid;
+		else if (img.equals("rock"))
+			return rock;
+		else if (img.equals("gold"))
+			return gold;
+		else if (img.equals("unicorn"))
+			return uni;
 		else
 			return noimage;
 	}
