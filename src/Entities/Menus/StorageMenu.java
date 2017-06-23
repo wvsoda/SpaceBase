@@ -12,10 +12,7 @@ public class StorageMenu extends Menu {
 	// THIS IS A COMPONENT OF A REGULAR MENU THAT HOUSES MOVABLE RESOURCES
 	public StorageMenu(int x, int y,int h,int w, ArrayList<Entity> coms, String labe, Entity container){
 		super(x, y, h, w, coms, labe, container);
-		System.out.println("helppp");
 		////TODO: need to make a thing to be able to change number of slots // component slots
-		
-		
 		
 	}
 

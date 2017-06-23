@@ -8,6 +8,7 @@ public abstract class Level {
 
 	static int currentLevel = 0;
 	List<Entity> ents;
+	String background;
 	
 	
 	public Level() {
@@ -21,6 +22,10 @@ public abstract class Level {
 	
 	public List<Entity> getEnts(){
 		return ents;
+	}
+	
+	public String getBackground(){
+		return background;
 	}
 
 }

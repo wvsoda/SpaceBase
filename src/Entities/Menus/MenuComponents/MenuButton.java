@@ -1,10 +1,11 @@
-package Entities;
+package Entities.Menus.MenuComponents;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
+import Entities.Entity;
 import Entities.Menus.*;
 import importing.ImportManager;
 
@@ -15,8 +16,17 @@ public class MenuButton extends Entity{
 	Entity cont;
 	String buttonAction;
 	public boolean clickable = true;
-	public MenuButton(int topX, int topY, String labe, String sound, String action, Entity container) {
-		super(topX, topY, 50, 162);
+	public MenuButton(int topX, int topY, int h, int w, String labe, String sound, String action, Entity container) {
+		super(topX, topY, h,w);
+		cont = container;
+		soundOption = sound;
+		label = labe;
+		clicked = false;
+		buttonAction = action;
+	}
+	
+	public MenuButton(int topX, int topY, String labe, String sound, String action, Entity container){
+		super(topX,topY,50,162);
 		cont = container;
 		soundOption = sound;
 		label = labe;

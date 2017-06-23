@@ -5,8 +5,8 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 
 import Entities.Entity;
-import Entities.MenuSpawnable;
 import Entities.Menus.Menu;
+import Entities.Menus.MenuSpawnable;
 import Entities.Menus.ShipModuleMenu;
 
 public abstract class ShipModule extends Entity implements MenuSpawnable{

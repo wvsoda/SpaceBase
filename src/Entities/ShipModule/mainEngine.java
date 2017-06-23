@@ -1,12 +1,13 @@
 package Entities.ShipModule;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.util.ArrayList;
 
 import Entities.Entity;
-import Entities.Menus.Menu;
-import Entities.Menus.ShipModuleMenu;
+import Entities.Menus.*;
+import Entities.Menus.MenuComponents.*;
 
 public class mainEngine extends ShipModule {
 
@@ -27,8 +28,9 @@ public class mainEngine extends ShipModule {
 		// TODO Auto-generated method stub
 		if(menuOpened){
 			//later create ship module sub classes
+			engineMenu x =  new engineMenu(xCoord+200, yCoord-50, 182,207, new ArrayList<Entity>(),this);
 			
-			return new ShipModuleMenu(xCoord+200, yCoord-50, 182,207, new ArrayList<Entity>(),this);
+			return x;
 		}
 		return null;
 	}

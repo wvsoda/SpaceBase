@@ -4,6 +4,7 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 
 import Entities.Menus.Menu;
+import Entities.Menus.MenuSpawnable;
 import Entities.ShipModule.*;
 import importing.ImportManager;
 

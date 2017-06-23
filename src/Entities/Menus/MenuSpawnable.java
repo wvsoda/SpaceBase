@@ -1,6 +1,4 @@
-package Entities;
-
-import Entities.Menus.Menu;
+package Entities.Menus;
 
 public interface MenuSpawnable {
 	Menu spawnMenu();

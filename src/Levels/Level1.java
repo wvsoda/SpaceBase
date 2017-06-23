@@ -11,6 +11,7 @@ public class Level1 extends Level {
 
 	public Level1() {
 		super();
+		background = "space";
 		ents.add(new Ship(200,100,500,390,0));
 		ents.add(new textInstruction(100, 100, 0, "noimage", "Upgrade your right engine!", 70));
 	}

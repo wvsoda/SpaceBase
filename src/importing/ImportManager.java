@@ -30,7 +30,7 @@ import Levels.*;
 
 public class ImportManager {
 	public ClassLoader cldr;
-	public static Image ship, noimage, blank, menu, button, masked,grid,rock,gold,uni;
+	public static Image ship, noimage, blank, menu, button, masked,grid,rock,gold,uni,space;
 	public static Clip rick, equip,unequip,click,music;
 	public AudioInputStream sound;
 	//public Polygon rightMod;
@@ -61,6 +61,8 @@ public class ImportManager {
 		gold = goldIcon.getImage();
 		ImageIcon uniIcon = new ImageIcon("img/unicorn.png");
 		uni = uniIcon.getImage();
+		ImageIcon spaceIcon = new ImageIcon("img/space.gif");
+		space = spaceIcon.getImage();
 		
 		
 		
@@ -237,6 +239,8 @@ public class ImportManager {
 			return gold;
 		else if (img.equals("unicorn"))
 			return uni;
+		else if (img.equals("space"))
+			return space;
 		else
 			return noimage;
 	}

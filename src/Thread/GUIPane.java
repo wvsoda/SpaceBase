@@ -2,8 +2,10 @@ package Thread;
 
 import Entities.*;
 import Entities.Menus.Menu;
+import Entities.Menus.MenuSpawnable;
 import Levels.Level;
 import Main.GameController;
+import importing.ImportManager;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -71,6 +73,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
     {
         // gra = g;
         Image offImage = createImage(winWidth, winHeight);
+        
         // if (offImage == null) offImage = createImage(748,748);
         // Creates an off-screen drawable image to be used for
         // double buffering; XSIZE, YSIZE are each of type ‘int’
@@ -79,6 +82,8 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
         // off-screen image
         paintOffScreen(buffer); // your own method
         g.drawImage(offImage, 0, 0, null);
+        
+        
 
         // draws the image with upper left corner at 0,0
 
@@ -97,8 +102,8 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
     	}
     	
     	p.tickAction();
-    	g.setColor(Color.BLUE);
-    	g.drawString(testing, clickedX, clickedY);
+    	//g.setColor(Color.BLUE);
+    	//g.drawString(testing, clickedX, clickedY);
     	
     }
 	

@@ -3,6 +3,7 @@ package Entities.Menus;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import Entities.*;
+import Entities.Menus.MenuComponents.MenuButton;
 import Entities.ShipModule.ShipModule;
 
 
@@ -12,7 +13,7 @@ public class ShipModuleMenu extends Menu{
 		super(x, y, h, w, coms, "", container);
 		label = ((ShipModule)cont).getModType() + " level " +((ShipModule)cont).getLevel();
 		//translateComs(x,y);
-		components.add(new MenuButton(x+10,y+30,"Upgrade","equip", "upgrade", this));
+		components.add(new MenuButton(x+10,y+30, "Upgrade","equip", "upgrade", this));
 	
 	}
 

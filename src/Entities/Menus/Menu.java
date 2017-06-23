@@ -2,15 +2,14 @@ package Entities.Menus;
 
 import java.awt.Color;
 import Entities.*;
+import Entities.Menus.MenuComponents.MenuButton;
+
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
-import Entities.Entity;
-import Entities.MenuButton;
-import Entities.PolyEntity;
 import Entities.ShipModule.ShipModule;
 import importing.ImportManager;
 
@@ -62,6 +61,17 @@ public abstract class Menu extends PolyEntity {
 		opened = false;
 	}
 
+	public void addComponents(ArrayList<Entity> h){
+		for (Entity e : h){
+			e.moveTo(xCoord + e.getX(),yCoord + e.getY(), angle);
+		}
+		components.addAll(h);
+	}
+	
+	public void addComponents(Entity h){
+		h.moveTo(xCoord + h.getX(),yCoord + h.getY(), angle);
+		components.add(h);
+	}
 
 	abstract public void buttonClick(String action);
 
