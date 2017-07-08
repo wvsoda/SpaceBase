@@ -26,11 +26,13 @@ import javax.swing.*;
 
 import Entities.*;
 import Levels.*;
-//import Levels.*;
+
+
 public class ImportManager {
 	public ClassLoader cldr;
-	public static Image ship, tomShip, noimage, blank, menu, button;
-	public static Clip clip;
+	public static Image ship, noimage, blank, menu, button, masked,grid,rock,gold,uni,space;
+	public static Clip rick, equip,unequip,click,music;
+	public AudioInputStream sound;
 	//public Polygon rightMod;
 	//public static Location[][] grid;
 	
@@ -39,29 +41,81 @@ public class ImportManager {
 		//grid = new Location[38][36];
 		//cldr = this.getClass().getClassLoader();
 		//Media hi;
-		ImageIcon shipIcon = new ImageIcon("ship.png");
-		ImageIcon tomShipIcon = new ImageIcon("tomShip.png");
-		ImageIcon noImgIcon = new ImageIcon("noimage.png");
-		ImageIcon blankImgIcon = new ImageIcon("blankimg.png");
-		ImageIcon menuImgIcon = new ImageIcon("menuImg.png");
-		ImageIcon menuButtIcon = new ImageIcon("unselected.png");
-		ship = shipIcon.getImage();
-		tomShip = tomShipIcon.getImage();
+		ImageIcon noImgIcon = new ImageIcon("img/noimage.png");
 		noimage = noImgIcon.getImage();
+		ImageIcon blankImgIcon = new ImageIcon("img/blankimg.png");
 		blank = blankImgIcon.getImage();
+		ImageIcon menuImgIcon = new ImageIcon("img/menuImg.png");
 		menu = menuImgIcon.getImage();
+		ImageIcon menuButtIcon = new ImageIcon("img/button1.png");
 		button = menuButtIcon.getImage();
+		ImageIcon shipIcon = new ImageIcon("img/tomShip.png");
+		ship = shipIcon.getImage();
+		ImageIcon grayIcon = new ImageIcon("img/grayed.png");
+		masked = grayIcon.getImage();
+		ImageIcon gridIcon = new ImageIcon("img/grid.png");
+		grid = gridIcon.getImage();
+		ImageIcon rockIcon = new ImageIcon("img/rock.png");
+		rock = rockIcon.getImage();
+		ImageIcon goldIcon = new ImageIcon("img/gold.png");
+		gold = goldIcon.getImage();
+		ImageIcon uniIcon = new ImageIcon("img/unicorn.png");
+		uni = uniIcon.getImage();
+		ImageIcon spaceIcon = new ImageIcon("img/space.gif");
+		space = spaceIcon.getImage();
+		
+		
 		
 		try {
-            File file = new File("RickAstley.wav");
-            if (file.exists()) {
-                AudioInputStream sound = AudioSystem.getAudioInputStream(file);
+            File file1 = new File("sound/equip.wav");
+            if (file1.exists()) {
+                sound = AudioSystem.getAudioInputStream(file1);
              // load the sound into memory (a Clip)
-                clip = AudioSystem.getClip();
-                clip.open(sound);
+                equip = AudioSystem.getClip();
+                equip.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: equip.wav");
+            }
+            File file2 = new File("sound/unequip.wav");
+            if (file2.exists()) {
+                sound = AudioSystem.getAudioInputStream(file2);
+             // load the sound into memory (a Clip)
+                unequip = AudioSystem.getClip();
+                unequip.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: unequip.wav");
+            }
+            File file3 = new File("sound/menuclick1.wav");
+            if (file3.exists()) {
+                sound = AudioSystem.getAudioInputStream(file3);
+             // load the sound into memory (a Clip)
+                click = AudioSystem.getClip();
+                click.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: menuclick1.wav");
+            }
+            File file4 = new File("sound/RickAstley.wav");
+            if (file4.exists()) {
+                sound = AudioSystem.getAudioInputStream(file4);
+             // load the sound into memory (a Clip)
+                rick = AudioSystem.getClip();
+                rick.open(sound);
             }
             else {
                 throw new RuntimeException("Sound: file not found: RickAstley.wav");
+            }
+            File file5 = new File("sound/music.wav");
+            if (file5.exists()) {
+                sound = AudioSystem.getAudioInputStream(file5);
+             // load the sound into memory (a Clip)
+                music = AudioSystem.getClip();
+                music.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: music.wav");
             }
         }
         catch (MalformedURLException e) {
@@ -83,16 +137,41 @@ public class ImportManager {
 		
     // play, stop, loop the sound clip
     }
-    public static void playSound(){
-        clip.setFramePosition(0);  // Must always rewind!
-        clip.start();
+	
+	
+    public static void soundControl(String clipName, String action){
+    	Clip clip = null;
+    	switch (clipName){
+    		case "click" : clip = click;
+    		break;
+    		case "equip" : clip = equip;
+    		break;
+    		case "unequip" : clip = unequip;
+    		break;
+    		case "RickAstley" : clip = rick;
+    		System.out.println("what the hell");
+    		break;
+    		case "music" : clip = music;
+    		break;
+    		default:
+    			clip = unequip;
+    			break;
+    	}
+    	switch (action){
+    	case "play" :  
+    		clip.setFramePosition(0);  // Must always rewind!
+    		clip.start();
+    		break;
+    	case "loop" :
+    		clip.loop(Clip.LOOP_CONTINUOUSLY);
+    		break;
+    	case "stop" :
+    		clip.stop();
+    		break;
+    	default :
+    		System.out.println("soundControl Error: Invalid action");
+    	}
     }
-    public static void loop(){
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
-    }
-    public static void stop(){
-            clip.stop();
-        }
 		/*File file = new File("RickAstley.wav");
 		try {
             // Open a sound file stored in the project folder
@@ -131,12 +210,13 @@ public class ImportManager {
 	public static ArrayList<Level> initLevels(){
 		//Ship e = new Ship(200,100,390,500,0); 
 		//Entity m = new MenuButton(300,300,"fuck");
-		Level zero = new Level0(), one = new Level1();
+		Level zero = new Level0(), one = new Level1(), two = new Level2();
 		
 		ArrayList<Level> lvls = new ArrayList<Level>();
 
 		lvls.add(zero);
 		lvls.add(one);
+		lvls.add(two);
 		//ents.add(m);
 		
 		return lvls;
@@ -145,14 +225,22 @@ public class ImportManager {
 	public static Image getImage(String img){
 		if(img.equals("ship"))
 			return ship;
-		else if(img.equals("tomShip"))
-			return tomShip;
-		else if(img.equals("blankimg"))
+		else if(img.equals("blank"))
 			return blank;
 		else if(img.equals("menu"))
 			return menu;
 		else if(img.equals("button"))
 			return button;
+		else if (img.equals("grid"))
+			return grid;
+		else if (img.equals("rock"))
+			return rock;
+		else if (img.equals("gold"))
+			return gold;
+		else if (img.equals("unicorn"))
+			return uni;
+		else if (img.equals("space"))
+			return space;
 		else
 			return noimage;
 	}

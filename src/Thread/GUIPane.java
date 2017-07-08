@@ -1,7 +1,11 @@
 package Thread;
 
 import Entities.*;
+import Entities.Menus.Menu;
+import Entities.Menus.MenuSpawnable;
+import Levels.Level;
 import Main.GameController;
+import importing.ImportManager;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -22,12 +26,14 @@ public class GUIPane extends JFrame implements
 ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	
 	private List<Entity> ents;
+	//private List<level> lvl;
+	private int currentLevel;
 	private char key;
 	private int clickedX, clickedY;
 	private boolean clicked;
 	private GameController gaco;
 	int time;
-	private final int winWidth = 900, winHeight = 506;
+	private final int winWidth = 1280, winHeight = 720;
 	String testing;
 	Menu openMenu;
 	
@@ -60,7 +66,6 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	}
 	
 	public void initReftoGUIPane(List<Entity> entities){
-		//gaco = gc;
 		ents = entities;
 	}
 	
@@ -68,6 +73,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
     {
         // gra = g;
         Image offImage = createImage(winWidth, winHeight);
+        
         // if (offImage == null) offImage = createImage(748,748);
         // Creates an off-screen drawable image to be used for
         // double buffering; XSIZE, YSIZE are each of type ‘int’
@@ -76,6 +82,8 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
         // off-screen image
         paintOffScreen(buffer); // your own method
         g.drawImage(offImage, 0, 0, null);
+        
+        
 
         // draws the image with upper left corner at 0,0
 
@@ -85,15 +93,17 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 
     public void paintOffScreen(Graphics g)
     {
+    	Level p = gaco.levels.get(gaco.currentLevel);
     	for(Entity e : ents){
     		Integer[] is = {clickedX, clickedY};
-    		e.tickAction(is);
     		e.draw(g);
     		g.drawPolygon(e.returnBounds());
     		
     	}
-    	g.setColor(Color.BLUE);
-    	g.drawString(testing, clickedX, clickedY);
+    	
+    	p.tickAction();
+    	//g.setColor(Color.BLUE);
+    	//g.drawString(testing, clickedX, clickedY);
     	
     }
 	
@@ -166,6 +176,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 		else{
 			if(!openMenu.checkBounds(clickedX, clickedY)){
 				ents.remove(openMenu);
+				openMenu.close();
 				openMenu = null;
 			}
 		}
@@ -200,6 +211,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		//arg0.
 		
 	}
 	

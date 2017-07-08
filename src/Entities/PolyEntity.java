@@ -6,10 +6,10 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public abstract class PolyEntity extends Entity {
-	ArrayList<Entity> components;
-	Entity clicked;
+	protected ArrayList<Entity> components;
+	protected Entity clicked;
 	
-	PolyEntity(int x, int y, int h, int w, double angel, String img, ArrayList<Entity> coms){
+	public PolyEntity(int x, int y, int h, int w, double angel, String img, ArrayList<Entity> coms){
 		super(x, y, h, w, angel, img);
 		components = coms;
 		clicked = null;
@@ -50,16 +50,13 @@ public abstract class PolyEntity extends Entity {
 			else
 				i++;
 		}
-		ImportManager.playSound();
-		//if(bounds.contains(x, y))
-		//	System.out.print("yay");
-		
+	
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		g.drawImage(ImportManager.getImage(image), xCoord, yCoord, height, width, null);
+		g.drawImage(ImportManager.getImage(image), xCoord, yCoord, width, height, null);
 		for(Entity e : components){
 			e.draw(g);
 		}

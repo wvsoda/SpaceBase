@@ -6,10 +6,11 @@ public class MovableResource extends Entity {
 	int amt;
 	String id;
 	
-	public MovableResource(int Amt, String ID){
-		super(0,0,0,0,0,"");
+	
+	//TODO this will use an ID type system later, but will only use images for now
+	public MovableResource(int Amt, String img){
+		super(0,0,0,0,0,img);
 		amt=Amt;
-		id=ID;
 	}
 	
 	public int amt(){
@@ -17,24 +18,18 @@ public class MovableResource extends Entity {
 	}
 	
 	public String type(){
-		return id;
+		return image;
 	}
 
-	@Override
-	public void tickAction(Object b) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(image);
 	}
 }

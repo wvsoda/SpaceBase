@@ -3,8 +3,10 @@ import importing.ImportManager;
 
 
 import java.util.*;
+import java.util.logging.Level;
 
 import Entities.*;
+import Levels.*;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -17,9 +19,9 @@ import Levels.*
 public class GameController {
 	GUIManager gui;// = new GUIManager();
 	boolean menuOpen;
-	List<Level> levels;
+	public List<Levels.Level> levels;
 	List<Entity> ents;
-	int currentLevel;
+	public int currentLevel;
 	public GameController (){
 		/*gui = new GUIManager();
 		Timer t = gui.initTimer();
@@ -30,6 +32,7 @@ public class GameController {
 		JFrame realGui = gui.getThis();
 		
 		realGui.setVisible(true);*/
+
 		currentLevel = 0;
 		gui = new GUIManager();
 		Timer t = gui.initTimer();
@@ -41,7 +44,7 @@ public class GameController {
 		JFrame realGui = gui.getThis();
 		
 		realGui.setVisible(true);
-		
+		ImportManager.soundControl("music", "loop");
 	}
 	
 	public void run() {
