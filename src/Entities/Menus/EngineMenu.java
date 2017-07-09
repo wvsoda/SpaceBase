@@ -5,16 +5,16 @@ import java.util.ArrayList;
 
 import Entities.Entity;
 import Entities.Menus.MenuComponents.MenuButton;
-import Entities.Menus.MenuComponents.statusBar;
+import Entities.Menus.MenuComponents.StatusBar;
 import Entities.ShipModule.ShipModule;
 
-public class engineMenu extends ShipModuleMenu {
+public class EngineMenu extends ShipModuleMenu {
 
-	public engineMenu(int x, int y, int h, int w, ArrayList<Entity> coms, Entity container) {
+	public EngineMenu(int x, int y, int h, int w, ArrayList<Entity> coms, Entity container) {
 		super(x, y, h, w, coms, container);
 		
 		
-		components.add(new statusBar(x+10, y+90, 100, 25, 0, Color.YELLOW, true, 0, "Fuel", false, 50, 0, 5));
+		components.add(new StatusBar(x+10, y+90, 100, 25, 0, Color.YELLOW, true, 0, "Fuel", false, 50, 0, 5));
 		components.add(new MenuButton(x+40, y+110, 25, 75, "Add Fuel", "click", "addFuel", this));
 	}
 
@@ -22,9 +22,9 @@ public class engineMenu extends ShipModuleMenu {
 	public void buttonClick(String action){
 		switch (action){
 		case "addFuel":
-			((statusBar)components.get(1)).currentValue++;
-			if ((((statusBar)components.get(1)).currentValue) >= (((statusBar)components.get(1)).minValue)){
-				(((statusBar)components.get(1)).currentValue) = (((statusBar)components.get(1)).minValue);
+			((StatusBar)components.get(1)).currentValue++;
+			if ((((StatusBar)components.get(1)).currentValue) >= (((StatusBar)components.get(1)).minValue)){
+				(((StatusBar)components.get(1)).currentValue) = (((StatusBar)components.get(1)).minValue);
 			}
 			
 			break;

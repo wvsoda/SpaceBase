@@ -8,9 +8,9 @@ import Entities.Entity;
 import Entities.Menus.Menu;
 import Entities.Menus.ShipModuleMenu;
 
-public class sideEngine extends ShipModule {
+public class SideEngine extends ShipModule {
 
-	public sideEngine(Polygon b, String location, int topx, int topy) {
+	public SideEngine(Polygon b, String location, int topx, int topy) {
 		super(b, location + " Engine", topx, topy);
 		
 		System.out.println('.'+moduleType+'.');

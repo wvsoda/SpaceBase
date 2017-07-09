@@ -9,9 +9,9 @@ import Entities.Entity;
 import Entities.Menus.*;
 import Entities.Menus.MenuComponents.*;
 
-public class mainEngine extends ShipModule {
+public class MainEngine extends ShipModule {
 
-	public mainEngine(Polygon b, int topX, int topY) {
+	public MainEngine(Polygon b, int topX, int topY) {
 		super(b, "Main Engine", topX, topY);
 		// TODO Auto-generated constructor stub
 	}
@@ -28,7 +28,7 @@ public class mainEngine extends ShipModule {
 		// TODO Auto-generated method stub
 		if(menuOpened){
 			//later create ship module sub classes
-			engineMenu x =  new engineMenu(xCoord+200, yCoord-50, 182,207, new ArrayList<Entity>(),this);
+			EngineMenu x =  new EngineMenu(xCoord+200, yCoord-50, 182,207, new ArrayList<Entity>(),this);
 			
 			return x;
 		}

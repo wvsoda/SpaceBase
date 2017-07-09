@@ -27,11 +27,11 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 		
 		components = new ArrayList<Entity>();
 		this.setBounds(new Polygon((shipX),(shipY),shipX.length));
-		components.add(new sideEngine(new Polygon(EngineRx,EngineLRy,EngineRx.length), 
+		components.add(new SideEngine(new Polygon(EngineRx,EngineLRy,EngineRx.length), 
 				"Right", smallest(EngineRx), smallest(EngineLRy)));
-		components.add(new sideEngine(new Polygon((EngineLx),(EngineLRy),EngineLRy.length), 
+		components.add(new SideEngine(new Polygon((EngineLx),(EngineLRy),EngineLRy.length), 
 				"Left", smallest(EngineLx), smallest(EngineLRy)));
-		components.add(new cockpit(new Polygon((cockpitX), (cockpitY), cockpitX.length), 
+		components.add(new Cockpit(new Polygon((cockpitX), (cockpitY), cockpitX.length), 
 				smallest(cockpitX), smallest(cockpitY)));
 		
 		ArrayList<Entity> itms = new ArrayList<Entity>();
@@ -39,9 +39,9 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 		itms.add(new MovableResource(8, "gold"));      /////// ITEMS for ship storage default as of RIGHT NOW
 		itms.add(new MovableResource(9,"unicorn"));
 		
-		components.add(new storage(new Polygon((storageX), (storageY), storageX.length), 
+		components.add(new Storage(new Polygon((storageX), (storageY), storageX.length), 
 				"Center", smallest(storageX), smallest(storageY),itms));
-		components.add(new mainEngine(new Polygon((mainEngineX), (mainEngineY), mainEngineX.length), 
+		components.add(new MainEngine(new Polygon((mainEngineX), (mainEngineY), mainEngineX.length), 
 				smallest(mainEngineX), smallest(mainEngineY)));
 		moveTo(x, y, 0);
 		//clicked = null;
