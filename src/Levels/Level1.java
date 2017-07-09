@@ -13,7 +13,7 @@ public class Level1 extends Level {
 		super();
 		background = "space";
 		ents.add(new Ship(200,100,500,390,0));
-		ents.add(new textInstruction(100, 100, 0, "noimage", "Upgrade your right engine!", 70));
+		ents.add(new textInstruction(100, 100, 0, "noimage", "Upgrade your right engine! Check your storage for scrap metal!", 30));
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class Level1 extends Level {
 		
 		ArrayList<Entity> f = ((Ship)ents.get(0)).getModules();
 		int x = ((ShipModule)f.get(0)).getLevel();
-		return(x > 1);
+		return(x == 1);
 	}
 
 	@Override

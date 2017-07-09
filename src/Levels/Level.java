@@ -5,7 +5,7 @@ import java.util.List;
 import Entities.*;
 
 public abstract class Level {
-
+	
 	static int currentLevel = 0;
 	List<Entity> ents;
 	String background;

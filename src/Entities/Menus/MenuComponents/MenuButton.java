@@ -15,23 +15,25 @@ public class MenuButton extends Entity{
 	String soundOption;
 	Entity cont;
 	String buttonAction;
-	public boolean clickable = true;
-	public MenuButton(int topX, int topY, int h, int w, String labe, String sound, String action, Entity container) {
+	public boolean clickable;
+	public MenuButton(int topX, int topY, int h, int w, String labe, String sound, String action, Entity container, boolean clicko) {
 		super(topX, topY, h,w);
 		cont = container;
 		soundOption = sound;
 		label = labe;
 		clicked = false;
 		buttonAction = action;
+		clickable = clicko;
 	}
 	
-	public MenuButton(int topX, int topY, String labe, String sound, String action, Entity container){
+	public MenuButton(int topX, int topY, String labe, String sound, String action, Entity container, boolean clicko){
 		super(topX,topY,50,162);
 		cont = container;
 		soundOption = sound;
 		label = labe;
 		clicked = false;
 		buttonAction = action;
+		clickable = clicko;
 	}
 
 
@@ -62,4 +64,8 @@ public class MenuButton extends Entity{
 		return clicked;
 	}
 	
+	public void removeMaskIf(boolean remove){
+		if(remove)
+			clickable = true;
+	}
 }

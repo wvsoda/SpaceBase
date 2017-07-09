@@ -35,9 +35,7 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 				smallest(cockpitX), smallest(cockpitY)));
 		
 		ArrayList<Entity> itms = new ArrayList<Entity>();
-		itms.add(new MovableResource(6, "rock"));
-		itms.add(new MovableResource(8, "gold"));      /////// ITEMS for ship storage default as of RIGHT NOW
-		itms.add(new MovableResource(9,"unicorn"));
+		itms.add(new MovableResource(1, "scrap"));
 		
 		components.add(new storage(new Polygon((storageX), (storageY), storageX.length), 
 				"Center", smallest(storageX), smallest(storageY),itms));
