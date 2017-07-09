@@ -11,6 +11,7 @@ public class MovableResource extends Entity {
 	public MovableResource(int Amt, String img){
 		super(0,0,0,0,0,img);
 		amt=Amt;
+		id = img;
 	}
 	
 	public int amt(){

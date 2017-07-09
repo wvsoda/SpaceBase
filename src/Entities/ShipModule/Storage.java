@@ -7,36 +7,34 @@ import java.util.ArrayList;
 import Entities.Entity;
 import Entities.Menus.Menu;
 import Entities.Menus.ShipModuleMenu;
+import Entities.Menus.StorageMenu;
 
-public class cockpit extends ShipModule {
-
-	public cockpit(Polygon b, int topX, int topY) {
-		super(b, "Cockpit", topX, topY);
+public class Storage extends ShipModule {
+	
+	//ArrayList<Entity> items;
+	public Storage(Polygon b, String location, int topX, int topY, ArrayList<Entity> itms) {
+		super(b, location + " Storage", topX, topY);
+		resources = itms;
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
 		// TODO Auto-generated method stub
-		System.out.print(moduleType);
-		menuOpened = true;
+
 	}
 
 	@Override
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
-		if(menuOpened){
-			//later create ship module sub classes
-			
-			return new ShipModuleMenu(xCoord+200, yCoord-50, 182,207, new ArrayList<Entity>(),this);
-		}
-		return null;
+		ArrayList<Entity> d = new ArrayList<Entity>();
+		d.add(new StorageMenu(10, 80, 160, 160, resources, "", null));
+		return new ShipModuleMenu(xCoord+200, yCoord-50, 182,247, d,this);
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 }

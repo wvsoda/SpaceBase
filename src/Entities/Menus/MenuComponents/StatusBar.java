@@ -6,7 +6,7 @@ import java.awt.Polygon;
 
 import Entities.Entity;
 
-public class statusBar extends Entity {
+public class StatusBar extends Entity {
 	String label;
 	public int maxValue;
 	public int minValue;
@@ -18,7 +18,7 @@ public class statusBar extends Entity {
 	boolean showMaxMin;
 	Polygon currentbar;
 	
-	public statusBar(int x, int y, int h, int w, double angel, Color c,boolean vert, int labelposup, String labe, boolean showMax, int min, int max, double value) {
+	public StatusBar(int x, int y, int h, int w, double angel, Color c,boolean vert, int labelposup, String labe, boolean showMax, int min, int max, double value) {
 		super(x, y, h, w, angel, "noimage");
 		barColor = c;
 		verticalBar = vert;

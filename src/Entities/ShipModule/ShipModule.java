@@ -46,6 +46,10 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 	}
 
 	public abstract void draw(Graphics g);
+	
+	public ArrayList<Entity> getResources(){
+		return resources;
+	}
 
 }
 
