@@ -18,7 +18,7 @@ public class MainEngine extends ShipModule {
 
 	@Override
 	public void whenClicked(int x, int y) {
-		// TODO Auto-generated method stub
+		super.whenClicked(x, y);
 		System.out.print(moduleType);
 		menuOpened = true;
 	}

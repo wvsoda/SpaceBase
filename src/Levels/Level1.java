@@ -13,7 +13,9 @@ public class Level1 extends Level {
 		super();
 		background = "space";
 		ents.add(new Ship(200,100,500,390,0));
-		ents.add(new TextInstruction(100, 100, 0, "noimage", "Upgrade your right engine! Check your storage for scrap metal!", 30));
+		ents.add(new TextInstruction(100, 100, 0, "noimage", 
+				"Upgrade your main engine! Check your storage for scrap metal!", 30));
+		
 	}
 
 	@Override
@@ -26,7 +28,14 @@ public class Level1 extends Level {
 
 	@Override
 	public void tickAction() {
-		//ents.get(0).moveTo(ents.get(0).getX() + 1, ents.get(0).getY() + 1, 0);
+		ArrayList<Entity> f = ((Ship)ents.get(0)).getModules();
+		//System.out.println(((ShipModule)f.get(3)).clickCount);
+		if(!((ShipModule)f.get(4)).nextLevel && ((ShipModule)f.get(3)).clickCount>0){
+			((ShipModule)f.get(4)).setNextLevelPoss();
+			ents.remove(1);
+			ents.add(new TextInstruction(100,100,0,"noimage","Oh goodie. You do have scrap metal."
+					+ "Tally ho to the main engine then",30));
+		}
 		
 		
 	}
