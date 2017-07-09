@@ -96,8 +96,8 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
     	Level p = gaco.levels.get(gaco.currentLevel);
     	for(Entity e : ents){
     		Integer[] is = {clickedX, clickedY};
+    		g.setColor(Color.BLACK);
     		e.draw(g);
-    		g.drawPolygon(e.returnBounds());
     		
     	}
     	

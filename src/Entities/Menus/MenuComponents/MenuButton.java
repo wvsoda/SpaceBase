@@ -46,7 +46,7 @@ public class MenuButton extends Entity{
 		if (!clickable){
 			g.drawImage(ImportManager.masked, xCoord, yCoord, width, height, null);
 		}
-		
+		g.drawPolygon(bounds);
 	}
 
 	@Override
