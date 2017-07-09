@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public class textInstruction extends Entity {
+public class TextInstruction extends Entity {
 
 	String text;
 	int textSize;
-	public textInstruction(int x, int y, double angel, String img, String txt, int txtsize) {
+	public TextInstruction(int x, int y, double angel, String img, String txt, int txtsize) {
 		super(x, y, 0, 0, angel, img);
 		text = txt;
 		textSize = txtsize;

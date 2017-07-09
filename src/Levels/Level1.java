@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Entities.Entity;
 import Entities.Ship;
-import Entities.textInstruction;
+import Entities.TextInstruction;
 import Entities.ShipModule.ShipModule;
 
 public class Level1 extends Level {
@@ -13,7 +13,7 @@ public class Level1 extends Level {
 		super();
 		background = "space";
 		ents.add(new Ship(200,100,500,390,0));
-		ents.add(new textInstruction(100, 100, 0, "noimage", "Upgrade your right engine!", 70));
+		ents.add(new TextInstruction(100, 100, 0, "noimage", "Upgrade your right engine!", 70));
 	}
 
 	@Override
