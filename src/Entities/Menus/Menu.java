@@ -41,7 +41,7 @@ public abstract class Menu extends PolyEntity {
 	*/
 	@Override
 	public void draw(Graphics g){
-		g.setColor(Color.WHITE);
+		//g.setColor(Color.WHITE);
 		g.drawRect(xCoord, yCoord, width, height);
 		super.draw(g);
 		labelUpdate();
