@@ -12,14 +12,13 @@ import Entities.Menus.MenuComponents.*;
 public class MainEngine extends ShipModule {
 
 	public MainEngine(Polygon b, int topX, int topY) {
-		super(b, "Main Engine", topX, topY);
+		super(b, "Main Engine", topX, topY,75);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
 		super.whenClicked(x, y);
-		System.out.print(moduleType);
 		menuOpened = true;
 	}
 
@@ -27,8 +26,8 @@ public class MainEngine extends ShipModule {
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
 		if(menuOpened){
-			//later create ship module sub classes
-			EngineMenu x =  new EngineMenu(xCoord+200, yCoord-50, 182,207, new ArrayList<Entity>(),this);
+
+			EngineMenu x =  new EngineMenu(xCoord+200, yCoord-50, 350,207, new ArrayList<Entity>(),this);
 			
 			return x;
 		}

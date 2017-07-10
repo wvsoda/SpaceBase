@@ -95,15 +95,11 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
     {
     	Level p = gaco.currentLevel;
     	for(Entity e : ents){
-    		Integer[] is = {clickedX, clickedY};
     		g.setColor(Color.BLACK);
     		e.draw(g);
-    		
     	}
     	
     	p.tickAction();
-    	//g.setColor(Color.BLUE);
-    	//g.drawString(testing, clickedX, clickedY);
     	
     }
 	

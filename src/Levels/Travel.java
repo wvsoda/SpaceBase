@@ -21,6 +21,7 @@ public class Travel extends Level {
 		
 		ents.add(new TextInstruction(500, 600, 0, null, "Time Left: ", 30));
 		ents.add(new ShipIcon(0,370,200,256,0));
+		ents.add(new TextInstruction(450,650,0,null,"Risk of Encounters: "+(riskFactor*100)+"%", 20));
 	}
 
 	@Override
@@ -40,11 +41,19 @@ public class Travel extends Level {
 		double percent = i*1280/tickTimeMax;
 		percent /= 1280;
 		ents.get(1).moveTo((int)(percent*1280), 370, 0.0);
+		
+		int x = (int) (100*Math.random());
+		int y = (int) (100*Math.random());
+		System.out.println((x+y)+"%");
+		if (x < riskFactor){
+			dest = new FightLevel(dest, ship);
+			tickTime = 0;
+		}
 	}
 
 	@Override
 	public Level getNextLevel() {
-		return new GameOverLevel(ship);
+		return dest;
 	}
 
 }

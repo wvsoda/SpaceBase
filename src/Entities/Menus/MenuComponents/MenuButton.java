@@ -42,7 +42,6 @@ public class MenuButton extends Entity{
 		g.drawImage(ImportManager.button, xCoord, yCoord, width, height, null);
 		//g.setFont(Font.getFont(""));
 		g.drawString(label, (xCoord+width/2) - (label.length()*4), yCoord+height/2);
-		g.drawString("\n"+xCoord+" "+yCoord, 100, 100);
 		if (!clickable){
 			g.drawImage(ImportManager.masked, xCoord, yCoord, width, height, null);
 		}

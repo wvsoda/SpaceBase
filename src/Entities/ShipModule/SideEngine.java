@@ -11,14 +11,11 @@ import Entities.Menus.ShipModuleMenu;
 public class SideEngine extends ShipModule {
 
 	public SideEngine(Polygon b, String location, int topx, int topy) {
-		super(b, location + " Engine", topx, topy);
-		
-		System.out.println('.'+moduleType+'.');
+		super(b, location + " Engine", topx, topy, 50);
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
-		System.out.print(moduleType);
 		menuOpened = true;
 	}
 	

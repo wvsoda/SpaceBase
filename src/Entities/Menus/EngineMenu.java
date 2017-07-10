@@ -17,8 +17,8 @@ public class EngineMenu extends ShipModuleMenu {
 		super(x, y, h, w, coms, container);
 		
 		
-		components.add(new StatusBar(x+10, y+90, 100, 25, 0, Color.YELLOW, true, 0, "Fuel", false, 50, 0, 50));
-		components.add(new MenuButton(x+40, y+110, 25, 75, "Add Fuel", "click", "addFuel", this,false));
+		components.add(new StatusBar(x+190, y+30, 100, 25, 0, Color.YELLOW, true, 0, "Fuel", false, 50, 0, 50));
+		components.add(new MenuButton(x+220, y+50, 25, 75, "Add Fuel", "click", "addFuel", this,false));
 		
 		if(((ShipModule)container).nextLevel)
 			((MenuButton)components.get(0)).removeMask();

@@ -11,14 +11,14 @@ import Entities.Menus.ShipModuleMenu;
 public class Cockpit extends ShipModule {
 
 	public Cockpit(Polygon b, int topX, int topY) {
-		super(b, "Cockpit", topX, topY);
+		super(b, "Cockpit", topX, topY, 75);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
 		// TODO Auto-generated method stub
-		System.out.print(moduleType);
+
 		menuOpened = true;
 	}
 

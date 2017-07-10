@@ -26,7 +26,6 @@ public class StartLevel extends Level {
 
 	@Override
 	public Level getNextLevel() {
-		System.out.println("hola");
 		return new TutorialLevel(ship);
 	}
 
