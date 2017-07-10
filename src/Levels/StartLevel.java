@@ -6,7 +6,7 @@ import Entities.Menus.MenuComponents.MenuButton;
 public class StartLevel extends Level {
 
 	public StartLevel() {
-		super();
+		super(new Ship(200,100,500,390,0));
 		background = "space";
 		ents.add(new MenuButton(500,500,"START","click","",null,true));
 		ents.add(new TextInstruction(300,300,0,"noimage","SPACE BASE",100));
@@ -22,6 +22,12 @@ public class StartLevel extends Level {
 	public void tickAction() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Level getNextLevel() {
+		System.out.println("hola");
+		return new TutorialLevel(ship);
 	}
 
 }

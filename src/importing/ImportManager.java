@@ -218,16 +218,16 @@ public class ImportManager {
 	public static ArrayList<Level> initLevels(){
 		//Ship e = new Ship(200,100,390,500,0); 
 		//Entity m = new MenuButton(300,300,"fuck");
-		Level start = new StartLevel(), tutorial = new TutorialLevel(), gameOver = new GameOverLevel(), travel = new Travel(100, 10, 0.0);
-		
+//		Level start = new StartLevel(), tutorial = new TutorialLevel(), gameOver = new GameOverLevel(), travel = new Travel(100, 10, 0.0);
+//		
 		ArrayList<Level> lvls = new ArrayList<Level>();
-
-		lvls.add(start);
-		lvls.add(tutorial);
-		lvls.add(travel);
-		lvls.add(gameOver);
-		//ents.add(m);
-		
+//
+//		lvls.add(start);
+//		lvls.add(tutorial);
+//		lvls.add(travel);
+//		lvls.add(gameOver);
+//		//ents.add(m);
+//		
 		return lvls;
 	}
 	

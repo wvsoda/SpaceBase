@@ -10,7 +10,11 @@ public class Travel extends Level {
 	int tickTimeMax;
 	int i = 0;
 	double riskFactor;
-	public Travel(int dist,int speed,double risk) {
+	Level dest;
+	
+	public Travel(int dist,int speed,double risk, Ship e, Level destination) {
+		super(e);
+		dest = destination;
 		travelTime = dist/speed;
 		tickTimeMax = (travelTime*50);
 		tickTime = tickTimeMax;
@@ -36,6 +40,11 @@ public class Travel extends Level {
 		double percent = i*1280/tickTimeMax;
 		percent /= 1280;
 		ents.get(1).moveTo((int)(percent*1280), 370, 0.0);
+	}
+
+	@Override
+	public Level getNextLevel() {
+		return new GameOverLevel(ship);
 	}
 
 }

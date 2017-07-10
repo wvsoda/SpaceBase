@@ -93,7 +93,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 
     public void paintOffScreen(Graphics g)
     {
-    	Level p = gaco.levels.get(gaco.currentLevel);
+    	Level p = gaco.currentLevel;
     	for(Entity e : ents){
     		Integer[] is = {clickedX, clickedY};
     		g.setColor(Color.BLACK);

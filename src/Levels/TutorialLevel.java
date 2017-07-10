@@ -9,10 +9,10 @@ import Entities.ShipModule.ShipModule;
 
 public class TutorialLevel extends Level {
 
-	public TutorialLevel() {
-		super();
+	public TutorialLevel(Ship e) {
+		super(e);
 		background = "space";
-		ents.add(new Ship(200,100,500,390,0));
+		ents.add(ship);
 		ents.add(new TextInstruction(100, 100, 0, "noimage", 
 				"Upgrade your main engine! Check your storage for scrap metal!", 30));
 		
@@ -38,6 +38,12 @@ public class TutorialLevel extends Level {
 		}
 		
 		
+	}
+
+	@Override
+	public Level getNextLevel() {
+		
+		return new Travel(100, 10, 0.0,ship,new GameOverLevel(ship));
 	}
 
 }
