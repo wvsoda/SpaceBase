@@ -37,13 +37,15 @@ public class StatusBar extends Entity {
 		g.drawPolygon(bounds);
 		int max = maxValue - minValue;
 		int current = (int) (currentValue - minValue);
-		currentPercent = current*100/max;
-		currentPercent /= 100.0;
 		if (!verticalBar){
+			currentPercent = current*width/max;
+			currentPercent /= width;
 			int polyx[] = {xCoord,(int) (xCoord+(currentPercent*width)),(int) (xCoord+(currentPercent*width)), xCoord};
 			int polyy[] = {yCoord,yCoord,yCoord+height,yCoord+height};
 			currentbar = new Polygon(polyx,polyy, polyx.length);
 		}else{
+			currentPercent = current*height/max;
+			currentPercent /= height;
 			int polyy[] = {yCoord+height,(int) (yCoord+(currentPercent*height)),(int)(yCoord+(currentPercent*height)),yCoord+height};
 			int polyx[] = {xCoord,xCoord,xCoord+width,xCoord+width};
 			currentbar = new Polygon(polyx,polyy, polyx.length);

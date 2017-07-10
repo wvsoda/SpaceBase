@@ -7,9 +7,9 @@ import Entities.Ship;
 import Entities.TextInstruction;
 import Entities.ShipModule.ShipModule;
 
-public class Level1 extends Level {
+public class TutorialLevel extends Level {
 
-	public Level1() {
+	public TutorialLevel() {
 		super();
 		background = "space";
 		ents.add(new Ship(200,100,500,390,0));

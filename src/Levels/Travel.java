@@ -33,8 +33,8 @@ public class Travel extends Level {
 		i++;
 		travelTime = tickTime/50;
 		((TextInstruction)ents.get(0)).text = "Time Left: "+travelTime;
-		double percent = i*100/tickTimeMax;
-		percent /= 100.0;
+		double percent = i*1280/tickTimeMax;
+		percent /= 1280;
 		ents.get(1).moveTo((int)(percent*1280), 370, 0.0);
 	}
 

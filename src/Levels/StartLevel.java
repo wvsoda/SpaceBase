@@ -3,9 +3,9 @@ package Levels;
 import Entities.*;
 import Entities.Menus.MenuComponents.MenuButton;
 
-public class Level0 extends Level {
+public class StartLevel extends Level {
 
-	public Level0() {
+	public StartLevel() {
 		super();
 		background = "space";
 		ents.add(new MenuButton(500,500,"START","click","",null,true));
