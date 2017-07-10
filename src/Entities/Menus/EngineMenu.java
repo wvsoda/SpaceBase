@@ -1,5 +1,5 @@
 package Entities.Menus;
-import Entities.ShipModule.*;
+import Entities.ShipModule.MainEngine;
 
 
 import java.awt.Color;
@@ -20,7 +20,8 @@ public class EngineMenu extends ShipModuleMenu {
 		components.add(new StatusBar(x+10, y+90, 100, 25, 0, Color.YELLOW, true, 0, "Fuel", false, 50, 0, 50));
 		components.add(new MenuButton(x+40, y+110, 25, 75, "Add Fuel", "click", "addFuel", this,false));
 		
-			((MenuButton)components.get(0)).removeMaskIf(true);
+		if(((ShipModule)container).nextLevel)
+			((MenuButton)components.get(0)).removeMask();
 	}		
 	
 	

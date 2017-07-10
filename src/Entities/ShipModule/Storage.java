@@ -19,12 +19,6 @@ public class Storage extends ShipModule {
 	}
 
 	@Override
-	public void whenClicked(int x, int y) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
 		ArrayList<Entity> d = new ArrayList<Entity>();

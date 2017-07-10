@@ -64,8 +64,7 @@ public class MenuButton extends Entity{
 		return clicked;
 	}
 	
-	public void removeMaskIf(boolean remove){
-		if(remove)
-			clickable = true;
+	public void removeMask(){
+		clickable = true;
 	}
 }

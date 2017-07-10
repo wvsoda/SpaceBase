@@ -3,9 +3,11 @@ package Entities;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
+import Entities.ShipModule.Storage;
+
 
 public abstract class Entity {
-	
+	static Entity clicke;
 	protected int xCoord, yCoord, height, width;
 	protected double angle;
 	protected String image;
@@ -74,6 +76,9 @@ public abstract class Entity {
 	public boolean checkBounds(int xClick, int yClick){
 		if(bounds.contains(xClick, yClick)){
 			whenClicked(xClick, yClick);
+			clicke = this;
+			//if(clicke instanceof Storage)
+			//	System.out.print("");
 			return true;
 		}
 		return false;
@@ -86,4 +91,8 @@ public abstract class Entity {
 	public abstract void whenClicked(int x, int y);
 	
 	//public void whenHovered(){}
+	
+	public Entity clicke(){
+		return clicke;
+	}
 	}
