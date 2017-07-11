@@ -13,7 +13,7 @@ public class Storage extends ShipModule {
 	
 	//ArrayList<Entity> items;
 	public Storage(Polygon b, String location, int topX, int topY, ArrayList<Entity> itms) {
-		super(b, location + " Storage", topX, topY);
+		super(b, location + " Storage", topX, topY, 100);
 		resources = itms;
 		// TODO Auto-generated constructor stub
 	}
@@ -22,8 +22,8 @@ public class Storage extends ShipModule {
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
 		ArrayList<Entity> d = new ArrayList<Entity>();
-		d.add(new StorageMenu(10, 80, 160, 160, resources, "", null));
-		return new ShipModuleMenu(xCoord+200, yCoord-50, 182,247, d,this);
+		d.add(new StorageMenu(180, 10, 160, 160, resources, "", null));
+		return new ShipModuleMenu(xCoord+200, yCoord-50, 380,190, d,this);
 	}
 
 	@Override

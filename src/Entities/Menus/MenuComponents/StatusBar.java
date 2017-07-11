@@ -37,13 +37,15 @@ public class StatusBar extends Entity {
 		g.drawPolygon(bounds);
 		int max = maxValue - minValue;
 		int current = (int) (currentValue - minValue);
-		currentPercent = current*100/max;
-		currentPercent /= 100.0;
 		if (!verticalBar){
+			currentPercent = current*width/max;
+			currentPercent /= width;
 			int polyx[] = {xCoord,(int) (xCoord+(currentPercent*width)),(int) (xCoord+(currentPercent*width)), xCoord};
 			int polyy[] = {yCoord,yCoord,yCoord+height,yCoord+height};
 			currentbar = new Polygon(polyx,polyy, polyx.length);
 		}else{
+			currentPercent = current*height/max;
+			currentPercent /= height;
 			int polyy[] = {yCoord+height,(int) (yCoord+(currentPercent*height)),(int)(yCoord+(currentPercent*height)),yCoord+height};
 			int polyx[] = {xCoord,xCoord,xCoord+width,xCoord+width};
 			currentbar = new Polygon(polyx,polyy, polyx.length);
@@ -53,12 +55,28 @@ public class StatusBar extends Entity {
 		g.setColor(Color.black);
 		if (labelPositionTop == 1 && !verticalBar){
 			g.drawString(label, (xCoord+width/2) - (label.length()*4), yCoord-5);
+			if (showMaxMin){
+				g.drawString(Integer.toString(maxValue), (xCoord+width-20), yCoord-5);
+				g.drawString(Integer.toString(minValue), xCoord, yCoord-5);
+			}
 		}else if (!verticalBar && labelPositionTop == -1){
 			g.drawString(label, (xCoord+width/2) - (label.length()*4), yCoord+height+15);
+			if (showMaxMin){
+				g.drawString(Integer.toString(maxValue), (xCoord+width-20), yCoord+height+15);
+				g.drawString(Integer.toString(minValue), xCoord, yCoord+height+15);
+			}
 		}else if (labelPositionTop == 0 && !verticalBar){
 			g.drawString(label, (xCoord+width/2) - (label.length()*4), (yCoord+height/2)+5);
+			if (showMaxMin){
+				g.drawString(Integer.toString(maxValue), (xCoord+width-20), (yCoord+height/2)+5);
+				g.drawString(Integer.toString(minValue), xCoord, (yCoord+height/2)+5);
+			}
 		}else if (verticalBar){
 			g.drawString(label, (xCoord+width/2)-(label.length()*4), yCoord +height+15);
+			if (showMaxMin){
+				g.drawString(Integer.toString(maxValue), xCoord, yCoord+height-5);
+				g.drawString(Integer.toString(minValue), xCoord, yCoord+15);
+			}
 		}
 	}
 

@@ -30,7 +30,7 @@ import Levels.*;
 
 public class ImportManager {
 	public ClassLoader cldr;
-	public static Image ship, noimage, blank, menu, button, masked,grid,rock,gold,uni,space, scrap;
+	public static Image ship, noimage, blank, menu, button, masked,grid,rock,gold,uni,space, scrap,travelShip, enemyShip;
 	public static Clip rick, equip,unequip,click,music;
 	public AudioInputStream sound;
 	//public Polygon rightMod;
@@ -65,8 +65,14 @@ public class ImportManager {
 		space = spaceIcon.getImage();
 		ImageIcon scrapIcon = new ImageIcon("img/scrap.png");
 		scrap = scrapIcon.getImage();
+		ImageIcon travelShipIcon = new ImageIcon("img/shipRight.png");
+		travelShip = travelShipIcon.getImage();
+		ImageIcon enemyShipIcon = new ImageIcon("img/enemyShip.png");
+		enemyShip = enemyShipIcon.getImage();
 		
 		
+		
+		///////////////////////////////////////////////////////////////////////////SOUND//////////////////////
 		
 		try {
             File file1 = new File("sound/equip.wav");
@@ -207,22 +213,27 @@ public class ImportManager {
 	        clip.close();
 	    }*/
 		
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////LEVELS/////////////
 	
 	
 	public static ArrayList<Level> initLevels(){
 		//Ship e = new Ship(200,100,390,500,0); 
 		//Entity m = new MenuButton(300,300,"fuck");
-		Level zero = new Level0(), one = new Level1(), two = new Level2();
-		
+//		Level start = new StartLevel(), tutorial = new TutorialLevel(), gameOver = new GameOverLevel(), travel = new Travel(100, 10, 0.0);
+//		
 		ArrayList<Level> lvls = new ArrayList<Level>();
-
-		lvls.add(zero);
-		lvls.add(one);
-		lvls.add(two);
-		//ents.add(m);
-		
+//
+//		lvls.add(start);
+//		lvls.add(tutorial);
+//		lvls.add(travel);
+//		lvls.add(gameOver);
+//		//ents.add(m);
+//		
 		return lvls;
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////IMAGES////////////////////////////////
 	
 	public static Image getImage(String img){
 		if(img.equals("ship"))
@@ -245,6 +256,10 @@ public class ImportManager {
 			return space;
 		else if (img.equals("scrap"))
 			return scrap;
+		else if (img.equals("travelShip"))
+			return travelShip;
+		else if (img.equals("enemyShip"))
+			return enemyShip;
 		else
 			return noimage;
 	}

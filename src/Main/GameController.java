@@ -3,7 +3,6 @@ import importing.ImportManager;
 
 
 import java.util.*;
-import java.util.logging.Level;
 
 import Entities.*;
 import Levels.*;
@@ -19,9 +18,8 @@ import Levels.*
 public class GameController {
 	GUIManager gui;// = new GUIManager();
 	boolean menuOpen;
-	public List<Levels.Level> levels;
 	List<Entity> ents;
-	public int currentLevel;
+	public Level currentLevel;
 	public GameController (){
 		/*gui = new GUIManager();
 		Timer t = gui.initTimer();
@@ -33,12 +31,11 @@ public class GameController {
 		
 		realGui.setVisible(true);*/
 
-		currentLevel = 0;
+		currentLevel = new StartLevel();
 		gui = new GUIManager();
 		Timer t = gui.initTimer();
 		t.start();
-		levels = ImportManager.initLevels();
-		ents = levels.get(currentLevel).getEnts();
+		ents = currentLevel.getEnts();
 		//int x, int y, int h, int w, double angel, String img
 		gui.initReftoGUIPane(this, ents);
 		JFrame realGui = gui.getThis();
@@ -54,19 +51,14 @@ public class GameController {
 	
 	
 	public void play() {
-		/*GUIPane g = gui.getThis();
-		g.changeTestString(g.getClickedX()+" "+g.getClickedY());
-		g.repaint();
-		*/
 		GUIPane g = gui.getThis();
-		g.changeTestString(g.getClickedX()+" "+g.getClickedY());
 		g.repaint();
-		if(levels.get(currentLevel).objectiveMet()){
+		if(currentLevel.objectiveMet()){
 			try{
-			currentLevel++;
-			g.initReftoGUIPane(levels.get(currentLevel).getEnts());
+				currentLevel = currentLevel.getNextLevel();
+				g.initReftoGUIPane(currentLevel.getEnts());
 			}
-			catch(IndexOutOfBoundsException e){
+			catch(NullPointerException e){
 				g.dispose();
 			}
 		}

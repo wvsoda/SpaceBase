@@ -1,9 +1,10 @@
 package Entities.Menus;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import Entities.*;
-import Entities.Menus.MenuComponents.MenuButton;
+import Entities.Menus.MenuComponents.*;
 import Entities.ShipModule.ShipModule;
 
 
@@ -14,22 +15,13 @@ public class ShipModuleMenu extends Menu{
 		label = ((ShipModule)cont).getModType() + " level " +((ShipModule)cont).getLevel();
 		//translateComs(x,y);
 		components.add(new MenuButton(x+10,y+30, "Upgrade","equip", "upgrade", this, false));
-	
+		components.add(new MenuButton(x+10, y+90, "Repair", "equip", "repair", this, false));
+		components.add(new StatusBar(x+10, y+150, 25, 162, 0, Color.GREEN, false, 0, "Health", true, 0, ((ShipModule)cont).health, ((ShipModule)cont).health - 6));
 	}
 
 	@Override
 	public void whenClicked(int x, int y) {
-		boolean done = false;
-		int i = 0;
-		while(!done && i < components.size()){
-			Entity e = components.get(i);
-			if(e.checkBounds(x,y)){
-				clicked = e;
-				done = true;
-			}
-			else
-				i++;
-		}
+		super.whenClicked(x, y);
 	}
 
 	@Override
@@ -38,6 +30,8 @@ public class ShipModuleMenu extends Menu{
 		case "upgrade" :
 			((ShipModule)cont).upgrade();
 			break;
+		case "repair":
+			((ShipModule)cont).health++;
 		default:
 			System.out.println("buttonClick action error");
 		}

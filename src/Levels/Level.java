@@ -9,10 +9,12 @@ public abstract class Level {
 	static int currentLevel = 0;
 	List<Entity> ents;
 	String background;
+	Ship ship;
 	
 	
-	public Level() {
+	public Level(Ship e) {
 		//initialize ents here
+		ship = e;
 		ents = new ArrayList<Entity>();
 	}
 	
@@ -27,5 +29,7 @@ public abstract class Level {
 	public String getBackground(){
 		return background;
 	}
+	
+	public abstract Level getNextLevel();
 
 }

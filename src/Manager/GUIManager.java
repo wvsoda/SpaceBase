@@ -18,7 +18,7 @@ public class GUIManager {
 	//@Override
 	public Timer initTimer() {
 		// TODO Auto-generated method stub
-		return new Timer(50, gui);
+		return new Timer(20, gui);
 	}
 	
 	public void initReftoGUIPane(GameController gc, List<Entity> ents){

@@ -6,7 +6,7 @@ import java.awt.Graphics;
 
 public class TextInstruction extends Entity {
 
-	String text;
+	public String text;
 	int textSize;
 	public TextInstruction(int x, int y, double angel, String img, String txt, int txtsize) {
 		super(x, y, 0, 0, angel, img);
