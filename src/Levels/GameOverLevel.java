@@ -11,7 +11,7 @@ public class GameOverLevel extends Level {
 		super(e);
 		ents.add(new TextInstruction(350, 370, 0, "noimage", "GAME OVER", 100));                //////////////// EVENTUALLY THIS MIGHT HAVE SOME STATISTICS OF THE GAME OR STUFF LIKE THAT
 		ents.add(new TextInstruction(0, 600, 0, "noimage", "congrat", 30));
-		ents.add(new StatusBar(0, 575, 50, 1280, 0, Color.GREEN, false, 0, "", false, 0, 1280, 0));
+		ents.add(new StatusBar(0, 575, 50, 1280, 0, Color.GREEN, false, 0, "", false, 0, 1280, 0,true));
 		//ents.add(new StatusBar(300, 300, 25, 200, 0, Color.green, false, 0, "Health", false,0,100,60));
 
 	}

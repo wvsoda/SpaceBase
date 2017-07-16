@@ -17,8 +17,10 @@ public class StatusBar extends Entity {
 	int labelPositionTop;
 	boolean showMaxMin;
 	Polygon currentbar;
+	boolean changeColor;
 	
-	public StatusBar(int x, int y, int h, int w, double angel, Color c,boolean vert, int labelposup, String labe, boolean showMax, int min, int max, double value) {
+	public StatusBar(int x, int y, int h, int w, double angel, Color c,boolean vert, int labelposup, String labe, boolean showMax, 
+			int min, int max, double value, boolean changeColors) {
 		super(x, y, h, w, angel, "noimage");
 		barColor = c;
 		verticalBar = vert;
@@ -28,6 +30,7 @@ public class StatusBar extends Entity {
 		maxValue = max;
 		currentValue = value;
 		label = labe;
+		changeColor = changeColors;
 	}
 
 
@@ -50,7 +53,17 @@ public class StatusBar extends Entity {
 			int polyx[] = {xCoord,xCoord,xCoord+width,xCoord+width};
 			currentbar = new Polygon(polyx,polyy, polyx.length);
 		}
-		g.setColor(barColor);
+		if (changeColor){
+			if (currentPercent > .5){
+				g.setColor(Color.GREEN);
+			}else if ((currentPercent > .25) && (currentPercent < .5)){
+				g.setColor(Color.YELLOW);
+			}else if (currentPercent < .25){
+				g.setColor(Color.RED);
+			}
+		}else{
+			g.setColor(barColor);
+		}
 		g.fillPolygon(currentbar);
 		g.setColor(Color.black);
 		if (labelPositionTop == 1 && !verticalBar){

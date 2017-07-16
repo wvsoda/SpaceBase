@@ -16,7 +16,7 @@ public class ShipModuleMenu extends Menu{
 		//translateComs(x,y);
 		components.add(new MenuButton(x+10,y+30, "Upgrade","equip", "upgrade", this, false));
 		components.add(new MenuButton(x+10, y+90, "Repair", "equip", "repair", this, false));
-		components.add(new StatusBar(x+10, y+150, 25, 162, 0, Color.GREEN, false, 0, "Health", true, 0, ((ShipModule)cont).health, ((ShipModule)cont).health - 6));
+		components.add(new StatusBar(x+10, y+150, 25, 162, 0, Color.GREEN, false, 0, "Health", true, 0, ((ShipModule)cont).maxHealth, ((ShipModule)cont).health, true));
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class ShipModuleMenu extends Menu{
 			((ShipModule)cont).upgrade();
 			break;
 		case "repair":
-			((ShipModule)cont).health++;
+			((ShipModule)cont).health = ((ShipModule)cont).maxHealth;
 		default:
 			System.out.println("buttonClick action error");
 		}

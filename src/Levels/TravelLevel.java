@@ -1,8 +1,9 @@
 package Levels;
 
 import Entities.*;
+import Entities.Menus.MenuComponents.MenuButton;
 
-public class Travel extends Level {
+public class TravelLevel extends Level {
 	
 	int travelTime;
 	int tickTime;
@@ -11,8 +12,9 @@ public class Travel extends Level {
 	int i = 0;
 	double riskFactor;
 	Level dest;
+	boolean stop;
 	
-	public Travel(int dist,int speed,double risk, Ship e, Level destination) {
+	public TravelLevel(int dist,int speed,double risk, Ship e, Level destination) {
 		super(e);
 		dest = destination;
 		travelTime = dist/speed;
@@ -22,14 +24,28 @@ public class Travel extends Level {
 		ents.add(new TextInstruction(500, 600, 0, null, "Time Left: ", 30));
 		ents.add(new ShipIcon(0,370,200,256,0));
 		ents.add(new TextInstruction(450,650,0,null,"Risk of Encounters: "+(riskFactor*100)+"%", 20));
+		ents.add(new MenuButton(10,10,75,125,"Stop","click","",null,true));
 	}
-
+	
+	public TravelLevel(int tick, double risk, Ship e, Level destination){
+		super(e);
+		dest = destination;
+		tickTime = tick;
+		tickTimeMax = tickTime;
+		
+		ents.add(new TextInstruction(500, 600, 0, null, "Time Left: ", 30));
+		ents.add(new ShipIcon(0,370,200,256,0));
+		ents.add(new TextInstruction(450,650,0,null,"Risk of Encounters: "+(riskFactor*100)+"%", 20));
+		ents.add(new MenuButton(10,10,75,125,"Stop","click","",null,true));
+	}
+	
+	
 	@Override
 	public boolean objectiveMet() {
 		// TODO Auto-generated method stub
 		
 		
-		return (tickTime <= 0);
+		return (tickTime <= 0) || stop;
 	}
 
 	@Override
@@ -48,6 +64,10 @@ public class Travel extends Level {
 		if (x < riskFactor){
 			dest = new FightLevel(dest, ship);
 			tickTime = 0;
+		}
+		if (((MenuButton)ents.get(3)).clicked()){
+			dest = new IdleLevel(ship, false, riskFactor, dest, tickTime);
+			stop = true;
 		}
 	}
 

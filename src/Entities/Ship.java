@@ -27,18 +27,19 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 		
 		components = new ArrayList<Entity>();
 		this.setBounds(new Polygon((shipX),(shipY),shipX.length));
-		components.add(new SideEngine(new Polygon(EngineRx,EngineLRy,EngineRx.length), 
-				"Right", smallest(EngineRx), smallest(EngineLRy)));
-		components.add(new SideEngine(new Polygon((EngineLx),(EngineLRy),EngineLRy.length), 
-				"Left", smallest(EngineLx), smallest(EngineLRy)));
-		components.add(new Cockpit(new Polygon((cockpitX), (cockpitY), cockpitX.length), 
-				smallest(cockpitX), smallest(cockpitY)));
 		
 		ArrayList<Entity> itms = new ArrayList<Entity>();
 		itms.add(new MovableResource(1, "scrap"));
 		
 		components.add(new Storage(new Polygon((storageX), (storageY), storageX.length), 
 				"Center", smallest(storageX), smallest(storageY),itms));
+		
+		components.add(new SideEngine(new Polygon(EngineRx,EngineLRy,EngineRx.length), 
+				"Right", smallest(EngineRx), smallest(EngineLRy)));
+		components.add(new SideEngine(new Polygon((EngineLx),(EngineLRy),EngineLRy.length), 
+				"Left", smallest(EngineLx), smallest(EngineLRy)));
+		components.add(new Cockpit(new Polygon((cockpitX), (cockpitY), cockpitX.length), 
+				smallest(cockpitX), smallest(cockpitY)));
 		components.add(new MainEngine(new Polygon((mainEngineX), (mainEngineY), mainEngineX.length), 
 				smallest(mainEngineX), smallest(mainEngineY)));
 		moveTo(x, y, 0);

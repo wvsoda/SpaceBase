@@ -41,7 +41,7 @@ public class GameController {
 		JFrame realGui = gui.getThis();
 		
 		realGui.setVisible(true);
-		ImportManager.soundControl("music", "loop");
+		//ImportManager.soundControl("music", "loop");
 	}
 	
 	public void run() {
