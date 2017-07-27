@@ -27,6 +27,9 @@ public class TravelLevel extends Level {
 		ents.add(new MenuButton(10,10,75,125,"Stop","click","",null,true));
 	}
 	
+	public void initialize(){
+	}
+	
 	public TravelLevel(int tick, double risk, Ship e, Level destination){
 		super(e);
 		dest = destination;

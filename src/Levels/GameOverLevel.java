@@ -15,6 +15,9 @@ public class GameOverLevel extends Level {
 		//ents.add(new StatusBar(300, 300, 25, 200, 0, Color.green, false, 0, "Health", false,0,100,60));
 
 	}
+	
+	public void initialize(){
+	}
 
 	@Override
 	public boolean objectiveMet() {

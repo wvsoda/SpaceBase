@@ -22,6 +22,11 @@ public class IdleLevel extends Level {
 		ents.add(new MenuButton(10, 10, 75, 125, "Exit", "click", "", null, true));
 	}
 
+	public void initialize(){
+		ents.get(0).moveTo(200, 100, 0);
+		ents.get(0).resize(500, 390);
+	}
+	
 	@Override
 	public boolean objectiveMet() {
 		return ((MenuButton)ents.get(1)).clicked();

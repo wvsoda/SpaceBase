@@ -19,6 +19,10 @@ public class TutorialLevel extends Level {
 		((ShipModule)((Ship)ents.get(0)).getModules().get(4)).health = 50;
 		
 	}
+	
+	public void initialize(){
+		
+	}
 
 	@Override
 	public boolean objectiveMet() {
@@ -50,7 +54,7 @@ public class TutorialLevel extends Level {
 	@Override
 	public Level getNextLevel() {
 		((Storage)ship.getModules().get(0)).getResources().remove(0);
-		return new TravelLevel(100, 10, 0.0,ship,new GameOverLevel(ship));
+		return new TravelLevel(100, 10, 0.0,ship,new FightLevel(new GameOverLevel(ship), ship));
 	}
 
 }

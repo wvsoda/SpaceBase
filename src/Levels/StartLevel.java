@@ -12,6 +12,8 @@ public class StartLevel extends Level {
 		ents.add(new TextInstruction(300,300,0,"noimage","SPACE BASE",100));
 	}
 
+	public void initialize(){
+	}
 	@Override
 	public boolean objectiveMet() {
 		// TODO Auto-generated method stub

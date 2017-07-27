@@ -18,6 +18,8 @@ public abstract class Level {
 		ents = new ArrayList<Entity>();
 	}
 	
+	public abstract void initialize(); ////// initialize/modify ents and everything here
+	
 	public abstract boolean objectiveMet();
 	
 	public abstract void tickAction();

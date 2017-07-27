@@ -5,6 +5,7 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 
 import Entities.Entity;
+import Entities.Menus.EnemyModuleMenu;
 import Entities.Menus.Menu;
 import Entities.Menus.MenuSpawnable;
 import Entities.Menus.ShipModuleMenu;
@@ -36,6 +37,10 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 	public void whenClicked(int x, int y){
 		clickCount++;
 	}
+	
+	public Menu spawnEnemyMenu(){
+		return new EnemyModuleMenu(xCoord+200,yCoord-50, 182, 207, new ArrayList<Entity>(), moduleType, this);
+	};
 		
 	
 	@Override
