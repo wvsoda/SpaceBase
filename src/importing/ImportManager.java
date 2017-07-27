@@ -125,16 +125,16 @@ public class ImportManager {
             else {
                 throw new RuntimeException("Sound: file not found: music.wav");
             }
-//            File file6 = new File("sound/pew.wav");
-//            if (file5.exists()) {
-//                sound = AudioSystem.getAudioInputStream(file6);   ////// TODO: pew.wav isn't supported -- need to reduce bitrate when I have wifi 
-//             // load the sound into memory (a Clip)
-//                shoot = AudioSystem.getClip();
-//                shoot.open(sound);
-//            }
-//            else {
-//                throw new RuntimeException("Sound: file not found: music.wav");
-//            }
+            File file6 = new File("sound/pew.wav");
+            if (file5.exists()) {
+                sound = AudioSystem.getAudioInputStream(file6);   ////// TODO: pew.wav isn't supported -- need to reduce bitrate when I have wifi 
+             // load the sound into memory (a Clip)
+                shoot = AudioSystem.getClip();
+                shoot.open(sound);
+            }
+            else {
+                throw new RuntimeException("Sound: file not found: music.wav");
+            }
         }
         catch (MalformedURLException e) {
             e.printStackTrace();
@@ -170,6 +170,8 @@ public class ImportManager {
     		System.out.println("what the hell");
     		break;
     		case "music" : clip = music;
+    		break;
+    		case "shoot" : clip = shoot;
     		break;
     		default:
     			clip = unequip;

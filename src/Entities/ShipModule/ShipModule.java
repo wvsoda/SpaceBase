@@ -21,6 +21,7 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 	public int health;
 	public int maxHealth;
 	public int clickCount;
+	public boolean destroyed;
 	public ShipModule(Polygon b, String modType, int topX, int topY, int maxHealths) {
 		super(topX,topY,0,0, 0.0, "");
 		maxHealth = maxHealths;

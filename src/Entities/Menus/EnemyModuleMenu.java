@@ -20,13 +20,18 @@ public class EnemyModuleMenu extends Menu {
 
 	@Override
 	public void buttonClick(String action) {
-		ImportManager.soundControl("shoot", "play");
-		((ShipModule)cont).health -= 10;
+		
+		switch (action){
+		case "shoot":
+			((ShipModule)cont).health -= 10;
+			ImportManager.soundControl("shoot", "play");
+		}
+		
 	}
 
 	@Override
 	public void labelUpdate() {
-		// TODO Auto-generated method stub
+		((StatusBar)components.get(1)).currentValue = ((ShipModule)cont).health;
 
 	}
 
