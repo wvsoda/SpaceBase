@@ -5,6 +5,7 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 
 import Entities.Entity;
+import Entities.Menus.EnemyModuleMenu;
 import Entities.Menus.Menu;
 import Entities.Menus.MenuSpawnable;
 import Entities.Menus.ShipModuleMenu;
@@ -18,15 +19,18 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 	public boolean nextLevel=false;
 	int modLevel;
 	public int health;
+	public int maxHealth;
 	public int clickCount;
-	public ShipModule(Polygon b, String modType, int topX, int topY, int maxHealth) {
+	public boolean destroyed;
+	public ShipModule(Polygon b, String modType, int topX, int topY, int maxHealths) {
 		super(topX,topY,0,0, 0.0, "");
+		maxHealth = maxHealths;
 		health = maxHealth;
 		moduleType = modType;
 		bounds = b;
 		resources = new ArrayList<Entity>();
 		menuOpened = false;
-		modLevel = 0;
+		modLevel = 1;
 		clickCount = 0;
 	}
 
@@ -34,6 +38,10 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 	public void whenClicked(int x, int y){
 		clickCount++;
 	}
+	
+	public Menu spawnEnemyMenu(){
+		return new EnemyModuleMenu(xCoord+200,yCoord-50, 182, 207, new ArrayList<Entity>(), moduleType, this);
+	};
 		
 	
 	@Override

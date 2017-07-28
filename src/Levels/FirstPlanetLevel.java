@@ -36,4 +36,10 @@ public class FirstPlanetLevel extends Level {
 		return null;
 	}
 
+	@Override
+	public void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

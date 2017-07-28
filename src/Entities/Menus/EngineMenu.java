@@ -16,12 +16,11 @@ public class EngineMenu extends ShipModuleMenu {
 	public EngineMenu(int x, int y, int h, int w, ArrayList<Entity> coms, Entity container) {
 		super(x, y, h, w, coms, container);
 		
-		
-		components.add(new StatusBar(x+190, y+30, 100, 25, 0, Color.YELLOW, true, 0, "Fuel", false, 50, 0, 50));
+		components.add(new StatusBar(x+190, y+30, 100, 25, 0, Color.YELLOW, true, 0, "Fuel", false, 50, 0, 50,false));
 		components.add(new MenuButton(x+220, y+50, 25, 75, "Add Fuel", "click", "addFuel", this,false));
 		
 		if(((ShipModule)container).nextLevel)
-			((MenuButton)components.get(0)).removeMask();
+			((MenuButton)components.get(1)).removeMask();
 	}		
 	
 	
@@ -39,6 +38,8 @@ public class EngineMenu extends ShipModuleMenu {
 		case "upgrade" :
 			((ShipModule)cont).upgrade();
 			break;
+		case "repair":
+			((ShipModule)cont).health = ((ShipModule)cont).maxHealth;
 		default:
 			System.out.println("buttonClick action error");
 			

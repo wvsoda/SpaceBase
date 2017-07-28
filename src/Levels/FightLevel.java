@@ -11,17 +11,19 @@ public class FightLevel extends Level {
 		super(e);
 		oldLevel = old;
 		
-		ents.add(ship);
-		ship.moveTo(100, 200, 0);
-		ship.resize(256, 200);
+		ents.add(new EnemyShip(600, 200, 500, 390, 0));
 		ents.add(new TextInstruction(400,50,0,"noimage","Fight Scene yeet", 40));
-		ents.add(new MenuButton(800,300, 200,300, "fight", "", "", null, true));
+	}
+	
+	public void initialize(){
+		ship.moveTo(100, 200, 0);
+		ship.resize(500, 390);
+		ents.add(ship);
 	}
 
 	@Override
 	public boolean objectiveMet() {
-		// TODO Auto-generated method stub
-		return ((MenuButton)ents.get(2)).clicked();
+		return ((EnemyShip)ents.get(0)).dead();
 	}
 
 	@Override

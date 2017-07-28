@@ -8,10 +8,15 @@ import Entities.Menus.MenuSpawnable;
 import Entities.ShipModule.*;
 import importing.ImportManager;
 
-public class Ship extends PolyEntity implements MenuSpawnable {
+public class EnemyShip extends PolyEntity implements MenuSpawnable {
 	
-	public Ship(int x, int y, int h, int w, double angel){
-		super(0, 0, h, w, angel, "ship", null);
+	int totalHealthMax = 300;
+	int currentHealth;
+	public EnemyShip(int x, int y, int h, int w, double angel){
+		super(0, 0, h, w, angel, "enemyShip", null);
+		
+		currentHealth = totalHealthMax;
+		
 		int[] shipX = {0,115,115,275,275,385,385,310,310,80,80,0};
 		int[] shipY = {100,100,35,35,100,100,340,340,490,490,345,345};
 		int[] EngineRx = {300,385,385,300};
@@ -27,6 +32,7 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 		
 		components = new ArrayList<Entity>();
 		this.setBounds(new Polygon((shipX),(shipY),shipX.length));
+		
 		ArrayList<Entity> itms = new ArrayList<Entity>();
 		itms.add(new MovableResource(1, "scrap"));
 		
@@ -57,12 +63,32 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
 		try{
-			return ((ShipModule)clicked).spawnMenu();
+			return ((ShipModule)clicked).spawnEnemyMenu();
 		}
 	    catch(NullPointerException e){
 	    	System.out.println("Your shit's null boi");
 	    	return null;
 	    }
+	}
+	
+	public ArrayList<Entity> getModules(){
+		return components;
+	}
+
+
+	public boolean dead() {
+		if (((ShipModule)components.get(3)).health <= 0){
+			return true;
+		}
+		int h = 0;
+		for(Entity e : components){
+			h += ((ShipModule)e).health;
+		}
+		if(h <= (int)(totalHealthMax / 10)){
+			return true;
+		}
+		
+		return false;
 	}
 
 }

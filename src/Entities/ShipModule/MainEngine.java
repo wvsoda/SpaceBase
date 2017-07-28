@@ -26,10 +26,8 @@ public class MainEngine extends ShipModule {
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
 		if(menuOpened){
-
-			EngineMenu x =  new EngineMenu(xCoord+200, yCoord-50, 350,207, new ArrayList<Entity>(),this);
-			
-			return x;
+				EngineMenu x =  new EngineMenu(xCoord+200, yCoord-50, 350,207, new ArrayList<Entity>(),this);
+				return x;
 		}
 		return null;
 	}
