@@ -33,7 +33,6 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 				"Left", smallest(EngineLx), smallest(EngineLRy)));
 		components.add(new Cockpit(new Polygon((cockpitX), (cockpitY), cockpitX.length), 
 				smallest(cockpitX), smallest(cockpitY)));
-		
 		ArrayList<Entity> itms = new ArrayList<Entity>();
 		itms.add(new MovableResource(1, "scrap"));
 		
@@ -63,10 +62,6 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	    	System.out.println("Your shit's null boi");
 	    	return null;
 	    }
-	}
-	
-	public ArrayList<Entity> getModules(){
-		return components;
 	}
 
 }

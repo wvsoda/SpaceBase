@@ -18,12 +18,12 @@ public class ShipModuleMenu extends Menu{
 		components.add(new MenuButton(x+10, y+90, "Repair", "equip", "repair", this, false));
 		components.add(new StatusBar(x+10, y+150, 25, 162, 0, Color.GREEN, false, 0, "Health", true, 0, ((ShipModule)cont).health, ((ShipModule)cont).health - 6));
 	}
-
+	/*
 	@Override
 	public void whenClicked(int x, int y) {
 		super.whenClicked(x, y);
 	}
-
+	*/
 	@Override
 	public void buttonClick(String action) {
 		switch (action){

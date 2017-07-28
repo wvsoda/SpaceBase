@@ -62,4 +62,8 @@ public abstract class PolyEntity extends Entity {
 		}
 	}
 	
+	public ArrayList<Entity> getModules(){
+		return components;
+	}
+	
 }

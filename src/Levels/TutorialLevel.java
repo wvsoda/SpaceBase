@@ -43,7 +43,7 @@ public class TutorialLevel extends Level {
 	@Override
 	public Level getNextLevel() {
 		
-		return new Travel(100, 10, 0.0,ship,new GameOverLevel(ship));
+		return new Travel(100, 10, 0.0,ship,new FirstPlanetLevel(ship));//FirstPlanetLevel(ship);//
 	}
 
 }
