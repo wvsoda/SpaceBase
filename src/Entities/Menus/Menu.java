@@ -72,6 +72,10 @@ public abstract class Menu extends PolyEntity {
 		h.moveTo(xCoord + h.getX(),yCoord + h.getY(), angle);
 		components.add(h);
 	}
+	
+	public ArrayList<Entity> getComponents(){
+		return components;
+	}
 
 	abstract public void buttonClick(String action);
 

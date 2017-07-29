@@ -65,7 +65,7 @@ public class TravelLevel extends Level {
 		int y = (int) (100*Math.random());
 		System.out.println((x+y)+"%");
 		if (x < riskFactor){
-			dest = new FightLevel(dest, ship);
+			dest = new FightLevel(dest, ship, stop);
 			tickTime = 0;
 		}
 		if (((MenuButton)ents.get(3)).clicked()){

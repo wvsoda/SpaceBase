@@ -25,12 +25,17 @@ public class EnemyModuleMenu extends Menu {
 		case "shoot":
 			((ShipModule)cont).health -= 10;
 			ImportManager.soundControl("shoot", "play");
+			break;
+		default : System.out.println("Your enemy modules have errors");
 		}
 		
 	}
 
 	@Override
 	public void labelUpdate() {
+		if(((ShipModule)cont).destroyed){
+			((MenuButton)components.get(0)).clickable = false;
+		}
 		((StatusBar)components.get(1)).currentValue = ((ShipModule)cont).health;
 
 	}

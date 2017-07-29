@@ -10,8 +10,8 @@ import importing.ImportManager;
 
 public class EnemyShip extends PolyEntity implements MenuSpawnable {
 	
-	int totalHealthMax = 300;
-	int currentHealth;
+	public int totalHealthMax = 350;
+	public int currentHealth;
 	public EnemyShip(int x, int y, int h, int w, double angel){
 		super(0, 0, h, w, angel, "enemyShip", null);
 		
@@ -89,6 +89,23 @@ public class EnemyShip extends PolyEntity implements MenuSpawnable {
 		}
 		
 		return false;
+	}
+	
+	public int checkHealth(){
+		currentHealth = 0;
+		for (Entity e : components){
+			if (((ShipModule)e).health <= 0){
+				((ShipModule)e).health = 0;
+				((ShipModule)e).destroyed = true;
+			}else{
+				currentHealth += ((ShipModule)e).health;
+			}
+		}
+		return currentHealth;
+	}
+	
+	public void attack(Ship ship){
+		 ////////////// INSERT AI HERE
 	}
 
 }
