@@ -33,7 +33,7 @@ public class ShipModuleMenu extends Menu{
 		case "repair":
 			((ShipModule)cont).health = ((ShipModule)cont).maxHealth;
 		default:
-			System.out.println("buttonClick action error");
+			System.out.println("buttonClick action error "+ cont.getClass()+"  "+this.getClass());
 		}
 	}
 

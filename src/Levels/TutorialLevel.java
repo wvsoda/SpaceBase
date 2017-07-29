@@ -54,7 +54,7 @@ public class TutorialLevel extends Level {
 	@Override
 	public Level getNextLevel() {
 		((Storage)ship.getModules().get(0)).getResources().remove(0);
-		return new TravelLevel(100, 10, 0.0,ship,new FightLevel(new GameOverLevel(ship), ship, false));
+		return new TravelLevel(100, 10, 0.0,ship,new FightLevel(new FirstPlanetLevel(ship),ship,false));
 	}
 
 }

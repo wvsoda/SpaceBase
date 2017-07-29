@@ -57,6 +57,7 @@ public class GameController {
 			try{
 				currentLevel = currentLevel.getNextLevel();
 				currentLevel.initialize();
+				g.closeMenu();
 				g.initReftoGUIPane(currentLevel.getEnts());
 			}
 			catch(NullPointerException e){

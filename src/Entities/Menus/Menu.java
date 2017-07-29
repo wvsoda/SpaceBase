@@ -59,6 +59,7 @@ public abstract class Menu extends PolyEntity {
 	
 	public void close(){
 		opened = false;
+		components = null;
 	}
 
 	public void addComponents(ArrayList<Entity> h){

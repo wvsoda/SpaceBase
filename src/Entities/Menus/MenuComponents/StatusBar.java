@@ -54,7 +54,7 @@ public class StatusBar extends Entity {
 			currentbar = new Polygon(polyx,polyy, polyx.length);
 		}
 		if (changeColor){
-			if (currentPercent > .5){
+			if (currentPercent >= .5){
 				g.setColor(Color.GREEN);
 			}else if ((currentPercent > .25) && (currentPercent < .5)){
 				g.setColor(Color.YELLOW);

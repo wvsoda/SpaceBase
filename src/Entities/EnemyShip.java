@@ -12,9 +12,11 @@ public class EnemyShip extends PolyEntity implements MenuSpawnable {
 	
 	public int totalHealthMax = 350;
 	public int currentHealth;
-	public EnemyShip(int x, int y, int h, int w, double angel){
+	public boolean shootable;
+	public EnemyShip(int x, int y, int h, int w, double angel, boolean attackable){
 		super(0, 0, h, w, angel, "enemyShip", null);
 		
+		shootable = attackable;
 		currentHealth = totalHealthMax;
 		
 		int[] shipX = {0,115,115,275,275,385,385,310,310,80,80,0};
@@ -63,7 +65,7 @@ public class EnemyShip extends PolyEntity implements MenuSpawnable {
 	public Menu spawnMenu() {
 		// TODO Auto-generated method stub
 		try{
-			return ((ShipModule)clicked).spawnEnemyMenu();
+			return ((ShipModule)clicked).spawnEnemyMenu(shootable);
 		}
 	    catch(NullPointerException e){
 	    	System.out.println("Your shit's null boi");

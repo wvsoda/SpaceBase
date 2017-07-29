@@ -40,8 +40,9 @@ public class EngineMenu extends ShipModuleMenu {
 			break;
 		case "repair":
 			((ShipModule)cont).health = ((ShipModule)cont).maxHealth;
+			break;
 		default:
-			System.out.println("buttonClick action error");
+			System.out.println("buttonClick action error "+cont.getClass()+"  "+this.getClass());
 			
 		}
 	}

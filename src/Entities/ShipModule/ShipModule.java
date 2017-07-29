@@ -22,7 +22,6 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 	public int maxHealth;
 	public int clickCount;
 	public boolean destroyed;
-	public EnemyModuleMenu enemyMenu;
 	public ShipModuleMenu menu;
 	
 	public ShipModule(Polygon b, String modType, int topX, int topY, int maxHealths) {
@@ -35,7 +34,6 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 		menuOpened = false;
 		modLevel = 1;
 		clickCount = 0;
-		enemyMenu = new EnemyModuleMenu(xCoord+200,yCoord-50, 182, 207, new ArrayList<Entity>(), moduleType, this);
 	}
 
 	@Override
@@ -43,9 +41,8 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 		clickCount++;
 	}
 	
-	public Menu spawnEnemyMenu(){
-		enemyMenu.moveTo(xCoord+200, yCoord-50, 0);
-		return enemyMenu;
+	public Menu spawnEnemyMenu(boolean shootable){
+		return new EnemyModuleMenu(xCoord+200,yCoord-50, 182, 207, new ArrayList<Entity>(), moduleType, this, shootable);
 	}
 		
 	

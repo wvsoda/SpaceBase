@@ -181,6 +181,14 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 		
 	}
 	
+	public void closeMenu(){
+		if (openMenu != null){
+			ents.remove(openMenu);
+			openMenu.close();
+			openMenu = null;
+		}
+	}
+	
 	public boolean isClicked() {
 		if(clicked) {
 			clicked = false;

@@ -23,7 +23,7 @@ public class FightLevel extends Level {
 			playerTurn = true;
 		}
 		
-		ents.add(new EnemyShip(600, 200, 500, 390, 0));
+		ents.add(new EnemyShip(600, 200, 500, 390, 0, playerTurn));
 		ents.add(new TextInstruction(400,50,0,"noimage","Fight Scene yeet", 40));
 		enemyHealthCheck = ((EnemyShip)ents.get(0)).checkHealth();
 	}
@@ -43,16 +43,13 @@ public class FightLevel extends Level {
 	public void tickAction() {
 		boolean x = false;
 		EnemyShip eShip = (EnemyShip)ents.get(0);
-		for (Entity e : eShip.getModules()){
-			//int y = ((ShipModule)e).cue; 
-			eShip.checkHealth();
-			if (eShip.currentHealth < enemyHealthCheck){
-				x = true;
-				System.out.println("heck");
-				break;
-			}else{
-				x = false;
-			}
+		
+		//int y = ((ShipModule)e).cue; 
+		eShip.checkHealth();
+		if (eShip.currentHealth < enemyHealthCheck){
+			x = true;
+		}else{
+			x = false;
 		}
 		
 		if (x || !playerTurn){
@@ -63,25 +60,16 @@ public class FightLevel extends Level {
 	}
 	
 	private void switchTurn(){
-		System.out.println(playerTurn);
 		if(playerTurn){
 			playerTurn = false;
-			System.out.println("switching is occuring");
 			
 		}else{
 			((EnemyShip)ents.get(0)).attack((Ship)ents.get(2));
 			ImportManager.soundControl("shoot", "play");
 			playerTurn = true;
-			System.out.println("it shoudl be the player's turn now");
 		}
 		
-		for (Entity e : ((EnemyShip)ents.get(0)).getModules()){
-			for (Entity x : ((ShipModule)e).enemyMenu.getComponents()){
-				if (x instanceof MenuButton){
-					((MenuButton)x).clickable = (playerTurn);
-				}
-			}
-		}
+		((EnemyShip)ents.get(0)).shootable = playerTurn;
 		enemyHealthCheck = ((EnemyShip)ents.get(0)).checkHealth();
 	}
 
