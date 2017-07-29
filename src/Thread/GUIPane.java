@@ -100,7 +100,7 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
     	}
     	
     	p.tickAction();
-    	
+    	g.drawString(clickedX+" "+clickedY, clickedX, clickedY);
     }
 	
 	@Override

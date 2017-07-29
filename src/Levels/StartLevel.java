@@ -28,7 +28,8 @@ public class StartLevel extends Level {
 
 	@Override
 	public Level getNextLevel() {
-		return new TutorialLevel(ship);
+		TutorialLevel level = new TutorialLevel(ship);
+		return level;
 	}
 
 }

@@ -27,7 +27,6 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 		
 		components = new ArrayList<Entity>();
 		this.setBounds(new Polygon((shipX),(shipY),shipX.length));
-		
 		ArrayList<Entity> itms = new ArrayList<Entity>();
 		itms.add(new MovableResource(1, "scrap"));
 		
@@ -64,10 +63,6 @@ public class Ship extends PolyEntity implements MenuSpawnable {
 	    	System.out.println("Your shit's null boi");
 	    	return null;
 	    }
-	}
-	
-	public ArrayList<Entity> getModules(){
-		return components;
 	}
 
 }

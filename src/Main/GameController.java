@@ -60,6 +60,7 @@ public class GameController {
 				g.initReftoGUIPane(currentLevel.getEnts());
 			}
 			catch(NullPointerException e){
+				System.out.println("your shirts null boi");
 				g.dispose();
 			}
 		}
