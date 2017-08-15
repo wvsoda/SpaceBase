@@ -1,6 +1,7 @@
 package Thread;
 
 import Entities.*;
+
 import Entities.Menus.Menu;
 import Entities.Menus.MenuSpawnable;
 import Levels.Level;
@@ -71,7 +72,6 @@ ActionListener, KeyListener, MouseListener, MouseMotionListener{
 	
 	public void paint(Graphics g)
     {
-        // gra = g;
         Image offImage = createImage(winWidth, winHeight);
         
         // if (offImage == null) offImage = createImage(748,748);
