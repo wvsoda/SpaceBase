@@ -15,12 +15,13 @@ public abstract class Node extends JPanel implements MouseListener{
 	 * 
 	 */
 	private static final long serialVersionUID = 5095569851583415778L;
-	private String id, image;
+	protected static Map<String, Node> allNodes = new HashMap<String, Node>();
+	private String id;
 	private Map<String , Node> children;
 	private Node parent;
 	private Rectangle bounds;
 	
-	public Node(boolean clickable, String ID, Node theParent, String img, Rectangle rect) {
+	public Node(boolean clickable, String ID, Node theParent, Rectangle rect) {
 		super(null);
 		if(clickable)
 			this.addMouseListener(this);
@@ -30,7 +31,7 @@ public abstract class Node extends JPanel implements MouseListener{
 		parent = theParent;
 		bounds = rect;
 		this.setBounds(bounds);
-		image = img;
+		allNodes.put(id, this);
 	}
 	
 	public String getID(){
@@ -60,8 +61,10 @@ public abstract class Node extends JPanel implements MouseListener{
 		else if((child = children.get(next)) != null)
 			child.getNodeInTree(path);
 		return null;
-		
 	}
 	
-	//public void draw(Graphics)
+	public Node getNodeInMap(String ID){
+		return allNodes.get(ID);
+	}
+	
 }
